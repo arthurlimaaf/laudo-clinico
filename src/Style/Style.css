@@ -1,0 +1,70 @@
+.App-header {
+    /* background: linear-gradient(50deg, 		#2F4F4F, 	#20B2AA, 	#2F4F4F); */
+    background: #413b3b;
+    min-height: 100vh;  
+    color: white;
+    
+}
+
+.font-weight-bold {
+    color: black;
+}
+
+.label {
+    color: black;
+}
+
+.drop {
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    margin-top: 180px;
+}
+
+.button{
+    color: #181C3D;
+
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.letras{
+    text-decoration: none;
+    color: black;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    box-shadow: 5px 5px 5px black;
+}
+
+.form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.test {
+    padding-top: 15%;
+}
+
+.test2 {
+    padding-top: 5%;
+}
+
+.text-cad {
+    color: black;
+}
