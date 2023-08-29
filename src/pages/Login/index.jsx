@@ -24,19 +24,19 @@ const Signin = () => {
 
   return (
     <C.Container>
-      <img src={icct} alt="" />
-      <C.Label>AUTO LOADING SYSTEM</C.Label>
+      {/* <img src={icct} alt="" /> */}
+      <C.Label>LAUDO CLÍNICO</C.Label>
       <form onSubmit={handleSubmit}>
         <C.Content >
 
           <Input
             type="number"
-            placeholder="OPERATOR"
+            placeholder="SENHA"
             value={senha}
             onChange={(e) => [setSenha(e.target.value)]}
             onKeyPress={(event) => handleKeyPress(event)}
           />
-          {/* <Button Text="Login" onClick={() => navigate('/home')} /> */}
+          <Button Text="Login" onClick={() => navigate('/home')} />
 
         </C.Content>
       </form>

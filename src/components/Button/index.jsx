@@ -7,6 +7,6 @@ const Button = ({ Text, onClick, Type = "button" }) => {
         {Text}
     </C.Button>
   );
-};
+}
 
 export default Button;
