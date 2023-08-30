@@ -65,7 +65,7 @@ const CadastroLaudo = () => {
 
                     <div>
                         <TextField
-                            sx={{ m: 1, width: '50ch' }}
+                            sx={{ m: 1, width: '45ch' }}
                             label="Idade:"
                             id="standard-size-normal"
                             variant="standard"
