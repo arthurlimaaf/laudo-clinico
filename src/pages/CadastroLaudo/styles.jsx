@@ -19,7 +19,7 @@ export const Content = styled.div`
     width: 100%;
     box-shadow: 0 1px 2px #0003;
     background-color: white;
-    max-width: 400px;
+    max-width: 800px;
     padding: 30px;
     border-radius: 5px;
 `;
@@ -47,4 +47,17 @@ export const Strong  = styled.strong`
         text-decoration: none;
         color: #676767;
     }
+`;
+
+export const TiposAmostra = styled.div`
+    cursor: pointer;
+
+    h4 {
+        position: relative;
+        display: block;
+
+        align-items: left;
+    
+    }
+    
 `;
