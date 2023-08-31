@@ -48,16 +48,3 @@ export const Strong  = styled.strong`
         color: #676767;
     }
 `;
-
-export const TiposAmostra = styled.div`
-    cursor: pointer;
-
-    h4 {
-        position: relative;
-        display: block;
-
-        align-items: left;
-    
-    }
-    
-`;
