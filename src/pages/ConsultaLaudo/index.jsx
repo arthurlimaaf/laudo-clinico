@@ -45,6 +45,7 @@ const ConsultLaudo = () => {
 
                         <div>
                             <TextField
+                                disabled
                                 sx={{ m: 1, width: '20ch' }}
                                 label="Paciente:"
                                 id="standard-size-normal"
@@ -52,18 +53,34 @@ const ConsultLaudo = () => {
                             />
 
                             <TextField
+                                disabled
                                 sx={{ m: 1, width: '20ch' }}
                                 label="Registro:"
                                 id="standard-size-normal"
-                                defaultValue="Colpocitologia"
                                 variant="standard"
                             />
 
                             <TextField
+                                disabled
+                                sx={{ m: 1, width: '20ch' }}
+                                label="Idade:"
+                                id="standard-size-normal"
+                                variant="standard"
+                            />
+
+                            <TextField
+                                disabled
                                 sx={{ m: 1, width: '20ch' }}
                                 label="Registro:"
                                 id="standard-size-normal"
-                                defaultValue="Colpocitologia"
+                                variant="standard"
+                            />
+
+                            <TextField
+                                disabled
+                                sx={{ m: 1, width: '20ch' }}
+                                label="Data Coleta:"
+                                id="standard-size-normal"
                                 variant="standard"
                             />
                         </div>
