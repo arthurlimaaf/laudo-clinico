@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as C from "./styles";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -13,7 +13,8 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 // import icct from '../../../src/icct-logo.png';
 // import alertify from 'alertifyjs';
 // import 'alertifyjs/build/css/alertify.css';
@@ -35,6 +36,9 @@ const CadastroLaudo = () => {
     const navigate = useNavigate();
     const [showElement, setShowElement] = useState(false)
     const showOrHide = () => setShowElement(true)
+    const [showElement2, setShowElement2] = useState(false)
+    const showOrHide2 = () => setShowElement2(true)
+
     const [nome, setNome] = useState('')
     const [idade, setIdade] = useState('')
     const [registro, setRegistro] = useState('')
@@ -51,8 +55,6 @@ const CadastroLaudo = () => {
         <C.Container>
             {/* <img src={icct} alt="" /> */}
             <C.Content >
-                <C.Label>LAUDO DO EXAME CITOPATOLÓGICO DO COLO DO ÚTERO</C.Label>
-                <C.Label>DIAGNÓSTICO DESCRITIVO</C.Label>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                     <div>
                         <TextField
@@ -83,6 +85,8 @@ const CadastroLaudo = () => {
                             <DatePicker />
                         </LocalizationProvider>
                     </div>
+                    <C.Label>LAUDO DO EXAME CITOPATOLÓGICO DO COLO DO ÚTERO</C.Label>
+                <C.Label>DIAGNÓSTICO DESCRITIVO</C.Label>
 
                     <div>
                         <br></br>
@@ -126,147 +130,127 @@ const CadastroLaudo = () => {
                                 name="row-radio-buttons-group"
                             >
                                 <FormControlLabel value="sim" onClick={showOrHide} control={<Radio />} label="Sim" />
-                                <FormControlLabel value="nao" control={<Radio />} label="Não" />
+                                <FormControlLabel value="nao" onClick={showOrHide2} control={<Radio />} label="Não" />
                             </RadioGroup><br></br>
                         </FormControl>
 
-                        {showElement ? 
+                        {showElement ?
                             <FormControl>
-                            <RadioGroup
-                                aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue="female"
-                                name="radio-buttons-group"
-                            >
-                                <FormControlLabel value="inflamacao" control={<Radio />} label="Inflamação" />
-                                <FormControlLabel value="cervite" control={<Radio />} label="Cervite Linfocítica / Folicular" />
-                                <FormControlLabel value="radiacao" control={<Radio />} label="Radiação" />
-                                <FormControlLabel value="reacao" control={<Radio />} label="Reação ao dispositivo intrauterino (DIU)" />
-                            </RadioGroup><br></br>
+                                <RadioGroup
+                                    aria-labelledby="demo-radio-buttons-group-label"
+                                    defaultValue="female"
+                                    name="radio-buttons-group"
+                                >
+                                    <FormControlLabel value="inflamacao" control={<Radio />} label="Inflamação" />
+                                    <FormControlLabel value="cervite" control={<Radio />} label="Cervite Linfocítica / Folicular" />
+                                    <FormControlLabel value="radiacao" control={<Radio />} label="Radiação" />
+                                    <FormControlLabel value="reacao" control={<Radio />} label="Reação ao dispositivo intrauterino (DIU)" />
+                                </RadioGroup><br></br>
 
-                            <h5>* MICROBIOLOGIA</h5>
-                            <RadioGroup
-                                aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue="female"
-                                name="radio-buttons-group"
-                            >
-                                <FormControlLabel value="1" control={<Radio />} label="Bacilos curtos" />
-                                <FormControlLabel value="2" control={<Radio />} label="Bacilos curtos, Lactobacillus sp" />
-                                <FormControlLabel value="3" control={<Radio />} label="Bacilos curtos, organismos fúngicos morfologicamente consistentes com Candida spp., Bacilos curtos" />
-                                <FormControlLabel value="4" control={<Radio />} label="Bacilos curtos, organismos fúngicos morfologicamente consistentes com Candida spp" />
-                                <FormControlLabel value="5" control={<Radio />} label="Desvio da flora sugestivo de vaginose bacteriana" />
-                                <FormControlLabel value="6" control={<Radio />} label="Organismos fúngicos morfologicamente consistentes com Candida spp." />
-                                <FormControlLabel value="7" control={<Radio />} label="De padrão cocobacilar" />
-                                <FormControlLabel value="8" control={<Radio />} label="Lactobacillus sp" />
-                                <FormControlLabel value="9" control={<Radio />} label="Lactobacillus sp. com citólise discreta" />
-                                <FormControlLabel value="10" control={<Radio />} label="Lactobacillus sp. com citólise moderada" />
-                                <FormControlLabel value="11" control={<Radio />} label="Lactobacillus sp. com citólise acentuada" />
-                                <FormControlLabel value="12" control={<Radio />} label="Trichomonas vaginalis" />
-                                <FormControlLabel value="13" control={<Radio />} label="Bactérias morfologicamente consistentes com Actinomyces spp" />
-                                <FormControlLabel value="14" control={<Radio />} label="Alterações celulares consistentes com vírus Herpes simples" />
-                                <FormControlLabel value="15" control={<Radio />} label="Alterações celulares consistentes com Citomegalovírus" />
-                            </RadioGroup><br></br>
+                                <h5>* MICROBIOLOGIA</h5>
+                                <RadioGroup
+                                    aria-labelledby="demo-radio-buttons-group-label"
+                                    defaultValue="female"
+                                    name="radio-buttons-group"
+                                >
+                                    <FormControlLabel value="1" control={<Radio />} label="Bacilos curtos" />
+                                    <FormControlLabel value="2" control={<Radio />} label="Bacilos curtos, Lactobacillus sp" />
+                                    <FormControlLabel value="3" control={<Radio />} label="Bacilos curtos, organismos fúngicos morfologicamente consistentes com Candida spp., Bacilos curtos" />
+                                    <FormControlLabel value="4" control={<Radio />} label="Bacilos curtos, organismos fúngicos morfologicamente consistentes com Candida spp" />
+                                    <FormControlLabel value="5" control={<Radio />} label="Desvio da flora sugestivo de vaginose bacteriana" />
+                                    <FormControlLabel value="6" control={<Radio />} label="Organismos fúngicos morfologicamente consistentes com Candida spp." />
+                                    <FormControlLabel value="7" control={<Radio />} label="De padrão cocobacilar" />
+                                    <FormControlLabel value="8" control={<Radio />} label="Lactobacillus sp" />
+                                    <FormControlLabel value="9" control={<Radio />} label="Lactobacillus sp. com citólise discreta" />
+                                    <FormControlLabel value="10" control={<Radio />} label="Lactobacillus sp. com citólise moderada" />
+                                    <FormControlLabel value="11" control={<Radio />} label="Lactobacillus sp. com citólise acentuada" />
+                                    <FormControlLabel value="12" control={<Radio />} label="Trichomonas vaginalis" />
+                                    <FormControlLabel value="13" control={<Radio />} label="Bactérias morfologicamente consistentes com Actinomyces spp" />
+                                    <FormControlLabel value="14" control={<Radio />} label="Alterações celulares consistentes com vírus Herpes simples" />
+                                    <FormControlLabel value="15" control={<Radio />} label="Alterações celulares consistentes com Citomegalovírus" />
+                                </RadioGroup><br></br>
 
-                            <h5>* ATIPIAS CELULARES</h5>
-                            <RadioGroup
-                                row
-                                aria-labelledby="demo-row-radio-buttons-group-label"
-                                name="row-radio-buttons-group"
-                            >
-                                <FormControlLabel value="presente" control={<Radio />} label="Presente" />
-                                <FormControlLabel value="ausente" control={<Radio />} label="Ausente" />
-                            </RadioGroup><br></br>
+                                <h5>* ATIPIAS CELULARES</h5>
+                                <RadioGroup
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                >
+                                    <FormControlLabel value="presente" control={<Radio />} label="Presente" />
+                                    <FormControlLabel value="ausente" control={<Radio />} label="Ausente" />
+                                </RadioGroup><br></br>
 
-                            <h5>* OBSERVAÇÃO</h5>
-                            {/*VERIFICAR ESSA OBSERVAÇÃO  */}
+                                <h5>* OBSERVAÇÃO</h5>
+                                {/*VERIFICAR ESSA OBSERVAÇÃO  */}
 
-                            <h5>* CONCLUSÃO</h5>
-                            <RadioGroup
-                                aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue="female"
-                                name="radio-buttons-group"
-                            >
-                                <FormControlLabel value="citologia1" control={<Radio />} label="Citologia inflamatória discreta" />
-                                <FormControlLabel value="citologia2" control={<Radio />} label="Citologia inflamatória moderada" />
-                                <FormControlLabel value="citologia3" control={<Radio />} label="Citologia inflamatória acentuada" />
-                                <FormControlLabel value="citologia4" control={<Radio />} label="Citologia inflamatória discreta atrófica" />
-                                <FormControlLabel value="citologia5" control={<Radio />} label="Citologia inflamatória moderada atrófica" />
-                                <FormControlLabel value="citologia6" control={<Radio />} label="Citologia inflamatória acentuada atrófica" />
-                            </RadioGroup><br></br>
+                                <h5>* CONCLUSÃO</h5>
+                                <RadioGroup
+                                    aria-labelledby="demo-radio-buttons-group-label"
+                                    defaultValue="female"
+                                    name="radio-buttons-group"
+                                >
+                                    <FormControlLabel value="citologia1" control={<Radio />} label="Citologia inflamatória discreta" />
+                                    <FormControlLabel value="citologia2" control={<Radio />} label="Citologia inflamatória moderada" />
+                                    <FormControlLabel value="citologia3" control={<Radio />} label="Citologia inflamatória acentuada" />
+                                    <FormControlLabel value="citologia4" control={<Radio />} label="Citologia inflamatória discreta atrófica" />
+                                    <FormControlLabel value="citologia5" control={<Radio />} label="Citologia inflamatória moderada atrófica" />
+                                    <FormControlLabel value="citologia6" control={<Radio />} label="Citologia inflamatória acentuada atrófica" />
+                                </RadioGroup><br></br>
 
-                            </FormControl>   
-                        : null}
+                            </FormControl>
+                            : null}
 
-                        
-                        <FormControl>
-                            
-                        </FormControl>
-                        
+                        {/* CASO A RESPOSTA 3 FOR NÃO, ENTRAR NESSA CONDIÇÃO */}
+                        {showElement2 ?
+                            <FormControl>
+                                <RadioGroup
+                                    aria-labelledby="demo-radio-buttons-group-label"
+                                    defaultValue="female"
+                                    name="radio-buttons-group"
+                                >
+                                    <FormControlLabel value="inflamacao" control={<Radio />} label="Dentro dos Limites da Normalidade" />
+                                </RadioGroup><br></br>
 
+                                <h5>* MICROBIOLOGIA</h5>
+                                <RadioGroup
+                                    aria-labelledby="demo-radio-buttons-group-label"
+                                    defaultValue="female"
+                                    name="radio-buttons-group"
+                                >
+                                    <FormControlLabel value="1" control={<Radio />} label="Bacilos curtos" />
+                                    <FormControlLabel value="2" control={<Radio />} label="Bacilos curtos, Lactobacillus sp" />
+                                    <FormControlLabel value="3" control={<Radio />} label="Bacilos curtos, organismos fúngicos morfologicamente consistentes com Candida spp., Bacilos curtos" />
+                                    <FormControlLabel value="4" control={<Radio />} label="Bacilos curtos, organismos fúngicos morfologicamente consistentes com Candida spp" />
+                                    <FormControlLabel value="5" control={<Radio />} label="Desvio da flora sugestivo de vaginose bacteriana" />
+                                    <FormControlLabel value="6" control={<Radio />} label="Organismos fúngicos morfologicamente consistentes com Candida spp." />
+                                    <FormControlLabel value="7" control={<Radio />} label="De padrão cocobacilar" />
+                                    <FormControlLabel value="8" control={<Radio />} label="Lactobacillus sp" />
+                                    <FormControlLabel value="9" control={<Radio />} label="Lactobacillus sp. com citólise discreta" />
+                                    <FormControlLabel value="10" control={<Radio />} label="Lactobacillus sp. com citólise moderada" />
+                                    <FormControlLabel value="11" control={<Radio />} label="Lactobacillus sp. com citólise acentuada" />
+                                    <FormControlLabel value="12" control={<Radio />} label="Trichomonas vaginalis" />
+                                    <FormControlLabel value="13" control={<Radio />} label="Bactérias morfologicamente consistentes com Actinomyces spp" />
+                                    <FormControlLabel value="14" control={<Radio />} label="Alterações celulares consistentes com vírus Herpes simples" />
+                                    <FormControlLabel value="15" control={<Radio />} label="Alterações celulares consistentes com Citomegalovírus" />
+                                </RadioGroup><br></br>
+
+                                <h5>* CONCLUSÃO</h5>
+                                <RadioGroup
+                                    aria-labelledby="demo-radio-buttons-group-label"
+                                    defaultValue="female"
+                                    name="radio-buttons-group"
+                                >
+                                    <FormControlLabel value="citologia1" control={<Radio />} label="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." />
+                                </RadioGroup><br></br>
+
+                            </FormControl>
+                            : null}
                     </div>
                 </Box>
-                {/* <Box
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 2, width: '35ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >   
-                    <div>
-                        <TextField label="Paciente" id="outlined-size-normal" defaultValue="" />
-                        <TextField label="" id="outlined-size-normal" defaultValue="Colpocitologia" />
-                    </div>
-                </Box>
 
-                <Box
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 2, width: '35ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >   
-                    <div>
-                        <TextField label="Paciente" id="outlined-size-normal" defaultValue="" />
-                        <TextField label="" id="outlined-size-normal" defaultValue="Colpocitologia" />
-                    </div>
-                </Box> */}
-
-
-
-
-
-                {/* <FormControl fullWidth sx={{ m: 1 }}>
-                    Paciente:
-                    <InputLabel htmlFor="outlined-adornment-amount"></InputLabel>
-                    <OutlinedInput
-                        value={nome} onChange={(e) => setNome(e.target.value)}
-                    />
-                </FormControl>
-
-                <FormControl fullWidth sx={{ m: 1 }}>
-                    Idade:
-                    <InputLabel htmlFor="outlined-adornment-amount"></InputLabel>
-                    <OutlinedInput
-                        value={idade} onChange={(e) => setIdade(e.target.value)}
-                    />
-                </FormControl> */}
-
-                {/* <FormControl fullWidth sx={{ m: 1 }}>
-                    <InputLabel htmlFor="outlined-adornment-amount">PARTS NO</InputLabel>
-                    <OutlinedInput
-                        value={registro} onChange={(e) => setRegistro(e.target.value)}
-                    />
-                </FormControl>
-
-                <FormControl fullWidth sx={{ m: 1 }}>
-                    <InputLabel htmlFor="outlined-adornment-amount">LINE</InputLabel>
-                    <OutlinedInput
-                        value={line} onChange={(e) => setLine(e.target.value)}
-                    />
-                </FormControl> */}
-
-                {/* <Button type="submit" variant="outlined" size="large" onClick={showOrHide}>Submit</Button> */}
+                <Stack direction="row" spacing={2}>
+                    <Button variant="contained">CADASTRAR</Button>
+                </Stack>
 
             </C.Content>
         </C.Container>
