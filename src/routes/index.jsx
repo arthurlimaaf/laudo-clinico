@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home"
 import Login from "../pages/Login"
 import CadastroLaudo from "../pages/CadastroLaudo";
-// import Scanner from "../pages/scaner"
+import ConsultaLaudo from "../pages/ConsultaLaudo";
 
 const Private = ({ Item }) => {
     const signed = true;
@@ -18,7 +18,7 @@ const RoutesApp = () => {
             <Routes>
                 <Route exact path="/home" element={<Private Item={Home} />} />
                 <Route exact path="/cad-laudo" element={<Private Item={CadastroLaudo} />} />
-                {/* <Route exact path="/scanner" element={<Private Item={Scanner} />} /> */}
+                <Route exact path="/consult-laudo" element={<Private Item={ConsultaLaudo} />} />
                 <Route path="/" element={<Login />} />
                 <Route path="*" element={<Login />} />
             </Routes>
