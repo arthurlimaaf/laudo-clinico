@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Button from '../../components/Button';
+import ButtonEdit from '../../components/ButtonEdit';
 // import icct from '../../../src/icct-logo.png';
 import * as C from "./styles";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import ButtonExcluir from '../../components/ButtonExcluir';
 // import { useNavigate } from "react-router-dom";
 
 const ConsultLaudo = () => {
@@ -83,6 +85,8 @@ const ConsultLaudo = () => {
                                 id="standard-size-normal"
                                 variant="standard"
                             />
+                            <ButtonEdit Text="Editar"/>{' '}
+                            <ButtonExcluir Text="Excluir" />
                         </div>
                     </Box>
 

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const ButtonEdit = styled.button`
     padding: 16px 20px;
     outline: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 100%;
     cursor: pointer;
-    background-color: #1f104f;
+    background-color: #DAA520;
     color: white;
     font-weight: 600;
     font-size: 16px;
-    max-width: 350px;
+    max-width: 80px;
 
 `
