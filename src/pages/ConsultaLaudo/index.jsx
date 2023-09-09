@@ -1,98 +1,76 @@
-import React, { useState } from 'react'
-import Button from '../../components/Button';
+import React, { useState, useEffect } from 'react'
+import api from "../../api/api";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 import ButtonEdit from '../../components/ButtonEdit';
-// import icct from '../../../src/icct-logo.png';
 import * as C from "./styles";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import ButtonExcluir from '../../components/ButtonExcluir';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ConsultLaudo = () => {
 
-    // const navigate = useNavigate();
-    const [showElement3, setShowElement3] = useState(false);
-    const showOrHide3 = () => setShowElement3(true);
+    const navigate = useNavigate();
+    const [data, setDate] = useState([])
 
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    //     // console.log("submit");
-    //     navigate('/cad-laudo')
-    // }
+    useEffect(() => {
+        api.get('listPaciente')
+            .then(res => {
+                // console.log("Teste...", res.data.result)
+                setDate(res.data.result)
+            }).catch(err => console.log(err))
+    }, []);
+
+    const handleDelete = (nome) => {
+        api.delete(`/del-paciente/${nome}`)
+        .then(res => {
+            console.log('Deletado!!!', res.data.result)
+            alert('Paciente Deletado!');
+            navigate('/home');
+
+        })
+        .catch(err => console.log(err))
+    };
 
     return (
         <C.Container>
-            {/* <img src={icct} alt="" /> */}
             <C.Label>LAUDO CLÍNICO</C.Label>
             <C.Content >
-                <Box
-                    component="form"
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '38ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <TextField id="outlined-basic" label="Paciente" variant="outlined" />
-                </Box>
-                {/* <Button Text="CADASTRAR LAUDO" onClick={() => navigate('/cad-laudo')} /> */}
-                <Button Text="CONSULTAR LAUDO" onClick={showOrHide3} />
-                {/* <Button Text="Login" onClick={() => navigate('/home')} /> */}
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="caption table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>PACIENTE</TableCell>
+                                <TableCell align="right">IDADE</TableCell>
+                                <TableCell align="right">REGISTRO</TableCell>
+                                <TableCell align="right">UNIDADE</TableCell>
+                                <TableCell align="right">DATA COLETA</TableCell>
+                                <TableCell align="right"></TableCell>
+                                <TableCell align="right"></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell component="th" scope="row">
+                                        {item.nome}
+                                    </TableCell>
+                                    <TableCell align="right">{item.idade}</TableCell>
+                                    <TableCell align="right">{item.registro}</TableCell>
+                                    <TableCell align="right">{item.unidade}</TableCell>
+                                    <TableCell align="right">{item.data_coleta}</TableCell>
+                                    <TableCell align="right"><ButtonEdit Text="Editar" /></TableCell>
+                                    <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(item.nome)} Text="Excluir" /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </C.Content>
-
-            {showElement3 ?
-
-                <C.Content2>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-
-                        <div>
-                            <TextField
-                                disabled
-                                sx={{ m: 1, width: '20ch' }}
-                                label="Paciente:"
-                                id="standard-size-normal"
-                                variant="standard"
-                            />
-
-                            <TextField
-                                disabled
-                                sx={{ m: 1, width: '20ch' }}
-                                label="Registro:"
-                                id="standard-size-normal"
-                                variant="standard"
-                            />
-
-                            <TextField
-                                disabled
-                                sx={{ m: 1, width: '20ch' }}
-                                label="Idade:"
-                                id="standard-size-normal"
-                                variant="standard"
-                            />
-
-                            <TextField
-                                disabled
-                                sx={{ m: 1, width: '20ch' }}
-                                label="Registro:"
-                                id="standard-size-normal"
-                                variant="standard"
-                            />
-
-                            <TextField
-                                disabled
-                                sx={{ m: 1, width: '20ch' }}
-                                label="Data Coleta:"
-                                id="standard-size-normal"
-                                variant="standard"
-                            />
-                            <ButtonEdit Text="Editar"/>{' '}
-                            <ButtonExcluir Text="Excluir" />
-                        </div>
-                    </Box>
-
-                </C.Content2>
-
-                : null}
         </C.Container>
     );
 }

@@ -19,6 +19,7 @@ const RoutesApp = () => {
                 <Route exact path="/home" element={<Private Item={Home} />} />
                 <Route exact path="/cad-laudo" element={<Private Item={CadastroLaudo} />} />
                 <Route exact path="/consult-laudo" element={<Private Item={ConsultaLaudo} />} />
+                <Route exact path="/edit-laudo" element={<Private Item={ConsultaLaudo} />} />
                 <Route path="/" element={<Login />} />
                 <Route path="*" element={<Login />} />
             </Routes>
