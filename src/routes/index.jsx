@@ -4,6 +4,7 @@ import Home from "../pages/Home"
 import Login from "../pages/Login"
 import CadastroLaudo from "../pages/CadastroLaudo";
 import ConsultaLaudo from "../pages/ConsultaLaudo";
+import EditaLaudo from "../pages/EditaLaudo";
 
 const Private = ({ Item }) => {
     const signed = true;
@@ -19,7 +20,7 @@ const RoutesApp = () => {
                 <Route exact path="/home" element={<Private Item={Home} />} />
                 <Route exact path="/cad-laudo" element={<Private Item={CadastroLaudo} />} />
                 <Route exact path="/consult-laudo" element={<Private Item={ConsultaLaudo} />} />
-                <Route exact path="/edit-laudo" element={<Private Item={ConsultaLaudo} />} />
+                <Route exact path="/edit-laudo" element={<Private Item={EditaLaudo} />} />
                 <Route path="/" element={<Login />} />
                 <Route path="*" element={<Login />} />
             </Routes>

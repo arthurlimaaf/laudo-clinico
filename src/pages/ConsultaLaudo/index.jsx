@@ -17,6 +17,10 @@ const ConsultLaudo = () => {
     const navigate = useNavigate();
     const [data, setDate] = useState([])
 
+    const EditLaudo = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
+        navigate("/edit-laudo", { nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao});
+    }
+
     useEffect(() => {
         api.get('listPaciente')
             .then(res => {
@@ -27,13 +31,13 @@ const ConsultLaudo = () => {
 
     const handleDelete = (nome) => {
         api.delete(`/del-paciente/${nome}`)
-        .then(res => {
-            console.log('Deletado!!!', res.data.result)
-            alert('Paciente Deletado!');
-            navigate('/home');
+            .then(res => {
+                // console.log('Deletado!!!', res.data.result)
+                alert('Paciente Deletado!');
+                navigate('/home');
 
-        })
-        .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
     };
 
     return (
@@ -54,17 +58,17 @@ const ConsultLaudo = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {data.map((item, index) => (
+                            {data.map((data, index) => (
                                 <TableRow key={index}>
                                     <TableCell component="th" scope="row">
-                                        {item.nome}
+                                        {data.nome}
                                     </TableCell>
-                                    <TableCell align="right">{item.idade}</TableCell>
-                                    <TableCell align="right">{item.registro}</TableCell>
-                                    <TableCell align="right">{item.unidade}</TableCell>
-                                    <TableCell align="right">{item.data_coleta}</TableCell>
-                                    <TableCell align="right"><ButtonEdit Text="Editar" /></TableCell>
-                                    <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(item.nome)} Text="Excluir" /></TableCell>
+                                    <TableCell align="right">{data.idade}</TableCell>
+                                    <TableCell align="right">{data.registro}</TableCell>
+                                    <TableCell align="right">{data.unidade}</TableCell>
+                                    <TableCell align="right">{data.data_coleta}</TableCell>
+                                    <TableCell align="right"><ButtonEdit onClick={() => EditLaudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} Text="Editar" /></TableCell>
+                                    <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(data.nome)} Text="Excluir" /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

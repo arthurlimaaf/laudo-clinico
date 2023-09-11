@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as C from "./styles";
 import api from "../../api/api";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
@@ -18,8 +18,9 @@ import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { useNavigate } from "react-router-dom";
 
-const CadastroLaudo = () => {
+const EditaLaudo = () => {
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -30,47 +31,39 @@ const CadastroLaudo = () => {
     }));
 
     const navigate = useNavigate();
+    const [data, setDate] = useState([])
+
     const [showElement, setShowElement] = useState(false)
     const showOrHide = () => setShowElement(true)
     const [showElement2, setShowElement2] = useState(false)
     const showOrHide2 = () => setShowElement2(true)
 
-    const [nome, setNome] = useState('')
-    const [idade, setIdade] = useState('')
-    const [registro, setRegistro] = useState('')
-    const [unidade, setUnidade] = useState('')
-    const [data_coleta, setData] = useState(null)
-    const [adequabilidade, setAdequabilidade] = useState('')
-    const [epitelios, setEpitelios] = useState('')
-    const [alteracoes_celulares, setAlteracoes] = useState('')
-    const [microbiologia, setMicrobiologia] = useState('')
-    const [atipias_celulares, setAtipias] = useState('');
-    const [conclusao, setConclusao] = useState('');
+    const [nome, setNome] = useState(data.nome)
+    const [idade, setIdade] = useState(data.idade)
+    const [registro, setRegistro] = useState(data.registro)
+    const [unidade, setUnidade] = useState(data.unidade)
+    const [data_coleta, setData] = useState(data.data_coleta)
+    const [adequabilidade, setAdequabilidade] = useState(data.adequabilidade)
+    const [epitelios, setEpitelios] = useState(data.epitelios)
+    const [alteracoes_celulares, setAlteracoes] = useState(data.alteracoes_celulares)
+    const [microbiologia, setMicrobiologia] = useState(data.microbiologia)
+    const [atipias_celulares, setAtipias] = useState(data.atipias_celulares)
+    const [conclusao, setConclusao] = useState(data.conclusao);
 
-    const postData = (e) => {
-        e.preventDefault();
-        api.post('cad-paciente', {
-            nome,
-            idade,
-            registro: "Colpocitologia",
-            unidade,
-            data_coleta,
-            adequabilidade,
-            epitelios,
-            alteracoes_celulares,
-            microbiologia,
-            atipias_celulares,
-            conclusao
+    function EditLaudo(id_paciente) {
+        api.put(`put-paciente/${id_paciente}`, { nome: nome, idade: idade, registro: registro, unidade: unidade, data_coleta: data_coleta,
+         adequabilidade: adequabilidade, epitelios: epitelios, alteracoes_celulares: alteracoes_celulares, 
+         microbiologia: microbiologia, atipias_celulares: atipias_celulares, conclusao: conclusao}, (res) => {
+          console.log(res);
         })
-            .then(res => {
-                alert('Laudo do Paciente Cadastrado!')
-                navigate('/home')
-                // console.log('Posting Data', res)
-
-            }).catch((err) => {
-                alert('Laudo do Paciente não Cadastrado!')
-            })
-    }
+        .then(res => {
+            alert('Laudo Paciente Atualizado!')
+            history.push('/consult-laudo')
+    
+        } ).catch((err) => {
+          alert('Laudo Paciente não Atualizado!')
+        })
+      }
 
     return (
         <C.Container>
@@ -83,8 +76,8 @@ const CadastroLaudo = () => {
                                 label="Paciente:"
                                 id="standard-size-normal"
                                 variant="standard"
-                                value={nome}
-                                onChange={(e) => setNome(e.target.value)}
+                                value={data.nome} 
+                                onChange={e => setNome(e.target.value)}
                             />
 
                             <TextField
@@ -92,8 +85,8 @@ const CadastroLaudo = () => {
                                 label="Idade:"
                                 id="standard-size-normal"
                                 variant="standard"
-                                value={idade}
-                                onChange={(e) => setIdade(e.target.value)}
+                                value={data.idade} 
+                                onChange={e => setIdade(e.target.value)}
                             />
                         </div>
 
@@ -111,37 +104,26 @@ const CadastroLaudo = () => {
 
                         <div>
                             <Box sx={{ minWidth: 220 }}>
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">Unidade</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={unidade}
-                                        label="Unidade"
-                                        onChange={(e) => setUnidade(e.target.value)}
-                                    >
-                                        <MenuItem value="Matriz">Matriz</MenuItem>
-                                        <MenuItem value="Educandos">Educandos</MenuItem>
-                                        <MenuItem value="Aparecida">Aparecida</MenuItem>
-                                        <MenuItem value="Alvorada">Alvorada</MenuItem>
-                                        <MenuItem value="Cidade Nova">Cidade Nova</MenuItem>
-                                        <MenuItem value="Manoa">Manoa</MenuItem>
-                                        <MenuItem value="Grande Circular">Grande Circular</MenuItem>
-                                        <MenuItem value="Torquato">Torquato</MenuItem>
-                                        <MenuItem value="Compensa">Compensa</MenuItem>
-                                        <MenuItem value="Lírio do Vale">Lírio do Vale</MenuItem>
-                                    </Select>
-                                </FormControl>
+                            <TextField
+                                sx={{ m: 1, width: '18ch' }}
+                                label="Unidade:"
+                                id="standard-size-normal"
+                                variant="standard"
+                                value={data.unidade} 
+                                onChange={e => setDate(e.target.value)}
+                            />
                             </Box>{' '}
                         </div>
 
                         <div>
-                            <FormControl fullWidth>
-                                <LocalizationProvider dateAdapter={AdapterDayjs} >
-                                    <DatePicker value={data_coleta}
-                                        onChange={(e) => setData(e)} />
-                                </LocalizationProvider>
-                            </FormControl>
+                        <TextField
+                                sx={{ m: 1, width: '18ch' }}
+                                label="Data Coleta:"
+                                id="standard-size-normal"
+                                variant="standard"
+                                value={data.data_coleta} 
+                                onChange={e => setDate(e.target.value)}
+                            />
                         </div>
                         <C.Label>LAUDO DO EXAME CITOPATOLÓGICO DO COLO DO ÚTERO</C.Label>
                         <C.Label>DIAGNÓSTICO DESCRITIVO</C.Label>
@@ -334,7 +316,7 @@ const CadastroLaudo = () => {
                         </div>
                     </Box>
                     <Stack direction="row" spacing={2}>
-                        <Button onClick={postData} variant="contained">CADASTRAR</Button>
+                        <Button onClick={()=> EditLaudo(data.nome)} variant="contained">CADASTRAR</Button>
                     </Stack>
                 </form>
             </C.Content>
@@ -342,4 +324,4 @@ const CadastroLaudo = () => {
     );
 }
 
-export default CadastroLaudo;
+export default EditaLaudo;
