@@ -6,13 +6,13 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    height: 100vh;
-    width: 205vh;
+    // height: 100vh;
+    width: 200vh;
 `;
 
 export const Content = styled.div`
     gap: 25px;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     flex-direction: column;

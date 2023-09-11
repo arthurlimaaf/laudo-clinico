@@ -18,7 +18,7 @@ const ConsultLaudo = () => {
     const [data, setDate] = useState([])
 
     const EditLaudo = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
-        navigate("/edit-laudo", { nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao});
+        navigate("/edit-laudo", {state:{ nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
     }
 
     useEffect(() => {

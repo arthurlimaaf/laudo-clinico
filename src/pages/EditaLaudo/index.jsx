@@ -19,8 +19,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const EditaLaudo = () => {
+const EditaLaudo = (props) => {
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -30,8 +31,9 @@ const EditaLaudo = () => {
         color: theme.palette.text.secondary,
     }));
 
+    const location = useLocation();
     const navigate = useNavigate();
-    const [data, setDate] = useState([])
+    const [data, setDate] = useState(location.state)
 
     const [showElement, setShowElement] = useState(false)
     const showOrHide = () => setShowElement(true)
@@ -50,20 +52,20 @@ const EditaLaudo = () => {
     const [atipias_celulares, setAtipias] = useState(data.atipias_celulares)
     const [conclusao, setConclusao] = useState(data.conclusao);
 
-    function EditLaudo(id_paciente) {
-        api.put(`put-paciente/${id_paciente}`, { nome: nome, idade: idade, registro: registro, unidade: unidade, data_coleta: data_coleta,
-         adequabilidade: adequabilidade, epitelios: epitelios, alteracoes_celulares: alteracoes_celulares, 
-         microbiologia: microbiologia, atipias_celulares: atipias_celulares, conclusao: conclusao}, (res) => {
-          console.log(res);
-        })
-        .then(res => {
-            alert('Laudo Paciente Atualizado!')
-            history.push('/consult-laudo')
+    // function EditLaudo(id_paciente) {
+    //     api.put(`put-paciente/${id_paciente}`, { nome: nome, idade: idade, registro: registro, unidade: unidade, data_coleta: data_coleta,
+    //      adequabilidade: adequabilidade, epitelios: epitelios, alteracoes_celulares: alteracoes_celulares, 
+    //      microbiologia: microbiologia, atipias_celulares: atipias_celulares, conclusao: conclusao}, (res) => {
+    //       console.log(res);
+    //     })
+    //     .then(res => {
+    //         alert('Laudo Paciente Atualizado!')
+    //         navigate('/consult-laudo')
     
-        } ).catch((err) => {
-          alert('Laudo Paciente não Atualizado!')
-        })
-      }
+    //     } ).catch((err) => {
+    //       alert('Laudo Paciente não Atualizado!')
+    //     })
+    //   }
 
     return (
         <C.Container>
@@ -76,7 +78,7 @@ const EditaLaudo = () => {
                                 label="Paciente:"
                                 id="standard-size-normal"
                                 variant="standard"
-                                value={data.nome} 
+                                value={location.state.nome} 
                                 onChange={e => setNome(e.target.value)}
                             />
 
@@ -325,3 +327,45 @@ const EditaLaudo = () => {
 }
 
 export default EditaLaudo;
+
+
+//PAGINA 1
+// import {Link, useNavigate} from 'react-router-dom';
+
+// function ComponentA(props) {
+
+//   const navigate = useNavigate();
+
+//   const toComponentB=()=>{
+// navigate('/componentB',{state:{id:1,name:'sabaoon'}});
+//   }
+
+//   return (
+//    <>
+// <div> <a onClick={()=>{toComponentB()}}>Component B<a/></div>
+// </>
+//   );
+
+
+// }
+// export default ComponentA;
+
+
+// PAGINA 2
+// import {useLocation} from 'react-router-dom';
+
+//  function ComponentB() {
+
+//     const location = useLocation();
+   
+//         return (
+
+//             <>
+               
+// <div>{location.state.name}</div>
+
+//             </>
+//         )
+//     }
+
+// export default ComponentB;
