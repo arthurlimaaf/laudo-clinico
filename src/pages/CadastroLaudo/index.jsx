@@ -74,7 +74,7 @@ const CadastroLaudo = () => {
 
     return (
         <C.Container>
-            <C.Content >
+            <C.Content>
                 <form>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                         <div>
@@ -177,8 +177,8 @@ const CadastroLaudo = () => {
                                     value={epitelios}
                                     onChange={(e) => setEpitelios(e.target.value)}
                                 >
+                                    <FormControlLabel value="Escamoso, Glandular" control={<Radio />} label="Escamoso, Glandular" />
                                     <FormControlLabel value="Escamoso, ausência de componente endocervical ou de zona de transformação" control={<Radio />} label="Escamoso, ausência de componente endocervical ou de zona de transformação" />
-                                    <FormControlLabel value="Escamoso e Glandular" control={<Radio />} label="Escamoso e Glandular" />
                                     <FormControlLabel value="Escamoso, Glandular e Metaplásico" control={<Radio />} label="Escamoso, Glandular e Metaplásico" />
                                     <FormControlLabel value="Escamoso e Metaplásico" control={<Radio />} label="Escamoso e Metaplásico" />
                                 </RadioGroup><br></br>
@@ -316,7 +316,7 @@ const CadastroLaudo = () => {
                                         value={atipias_celulares}
                                         onChange={(e) => setAtipias(e.target.value)}
                                     >
-                                        <FormControlLabel value="Não" control={<Radio />} label="Não" />
+                                        <FormControlLabel value="NULL" control={<Radio />} label="Não" />
                                     </RadioGroup><br></br>
 
                                     <h5>* CONCLUSÃO</h5>
@@ -327,7 +327,7 @@ const CadastroLaudo = () => {
                                         value={conclusao}
                                         onChange={(e) => setConclusao(e.target.value)}
                                     >
-                                        <FormControlLabel value="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." control={<Radio />} label="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." />
+                                        <FormControlLabel value="NULL" control={<Radio />} label="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." />
                                     </RadioGroup><br></br>
                                 </FormControl>
                                 : null}
