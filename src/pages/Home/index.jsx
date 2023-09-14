@@ -25,8 +25,9 @@ const Home = () => {
             {/* <img src={icct} alt="" /> */}
             <C.Label>LAUDO CLÍNICO</C.Label>
             <C.Content >
-                <Button Text="CADASTRAR LAUDO" onClick={() => navigate('/cad-laudo')} />
-                <Button Text="CONSULTAR LAUDO PACIENTE" onClick={() => navigate('/consult-laudo')} />
+                <Button Text="CADASTRAR LAUDO PACIENTE" onClick={() => navigate('/cad-laudo')} />
+                <Button Text="CONSULTAR LAUDO PACIENTE (COM ALTERAÇÕES CELULARES)" onClick={() => navigate('/consult-laudo')} />
+                <Button Text="CONSULTAR LAUDO PACIENTE (SEM ALTERAÇÕES CELULARES)" onClick={() => navigate('/consult-laudo')} />
             </C.Content>
         </C.Container>
     );
