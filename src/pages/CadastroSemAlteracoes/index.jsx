@@ -19,7 +19,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-const CadastroLaudo = () => {
+const CadastroSemAlteracoes = () => {
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,32 +31,30 @@ const CadastroLaudo = () => {
 
     const navigate = useNavigate();
 
-    const [nome, setNome] = useState('')
-    const [idade, setIdade] = useState('')
-    const [registro, setRegistro] = useState('')
-    const [unidade, setUnidade] = useState('')
-    const [data_coleta, setData] = useState(null)
-    const [adequabilidade, setAdequabilidade] = useState('')
-    const [epitelios, setEpitelios] = useState('')
-    const [alteracoes_celulares, setAlteracoes] = useState('')
-    const [microbiologia, setMicrobiologia] = useState('')
-    const [atipias_celulares, setAtipias] = useState('');
-    const [conclusao, setConclusao] = useState('');
+    const [nome2, setNome2] = useState('')
+    const [idade2, setIdade2] = useState('')
+    const [registro2, setRegistro2] = useState('')
+    const [unidade2, setUnidade2] = useState('')
+    const [data_coleta2, setData2] = useState(null)
+    const [adequabilidade2, setAdequabilidade2] = useState('')
+    const [epitelios2, setEpitelios2] = useState('')
+    const [alteracoes_celulares2, setAlteracoes2] = useState('')
+    const [microbiologia2, setMicrobiologia2] = useState('')
+    const [conclusao2, setConclusao2] = useState('');
 
-    const postData = (e) => {
+    const postData2 = (e) => {
         e.preventDefault();
-        api.post('cad-paciente', {
-            nome,
-            idade,
-            registro: "Colpocitologia",
-            unidade,
-            data_coleta,
-            adequabilidade,
-            epitelios,
-            alteracoes_celulares,
-            microbiologia,
-            atipias_celulares,
-            conclusao
+        api.post('cad-paciente2', {
+            nome2,
+            idade2,
+            registro2: "Colpocitologia",
+            unidade2,
+            data_coleta2,
+            adequabilidade2,
+            epitelios2,
+            alteracoes_celulares2,
+            microbiologia2,
+            conclusao2
         })
             .then(res => {
                 alert('Laudo do Paciente Cadastrado!')
@@ -83,8 +81,8 @@ const CadastroLaudo = () => {
                                 label="Paciente:"
                                 id="standard-size-normal"
                                 variant="standard"
-                                value={nome}
-                                onChange={(e) => setNome(e.target.value)}
+                                value={nome2}
+                                onChange={(e) => setNome2(e.target.value)}
                             />
 
                             <TextField
@@ -92,8 +90,8 @@ const CadastroLaudo = () => {
                                 label="Idade:"
                                 id="standard-size-normal"
                                 variant="standard"
-                                value={idade}
-                                onChange={(e) => setIdade(e.target.value)}
+                                value={idade2}
+                                onChange={(e) => setIdade2(e.target.value)}
                             />
                         </div>
 
@@ -105,7 +103,7 @@ const CadastroLaudo = () => {
                                 // value="Colpocitologia"
                                 variant="standard"
                                 value="Colpocitologia"
-                                onChange={(e) => setRegistro(e.target.value)}
+                                onChange={(e) => setRegistro2(e.target.value)}
                             />
                         </div>
 
@@ -116,9 +114,9 @@ const CadastroLaudo = () => {
                                     <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={unidade}
+                                        value={unidade2}
                                         label="Unidade"
-                                        onChange={(e) => setUnidade(e.target.value)}
+                                        onChange={(e) => setUnidade2(e.target.value)}
                                     >
                                         <MenuItem value="Matriz">Matriz</MenuItem>
                                         <MenuItem value="Educandos">Educandos</MenuItem>
@@ -138,8 +136,8 @@ const CadastroLaudo = () => {
                         <div>
                             <FormControl fullWidth>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} >
-                                    <DatePicker value={data_coleta}
-                                        onChange={(e) => setData(e)} />
+                                    <DatePicker value={data_coleta2}
+                                        onChange={(e) => setData2(e)} />
                                 </LocalizationProvider>
                             </FormControl>
                         </div>
@@ -160,8 +158,8 @@ const CadastroLaudo = () => {
                                     row
                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                     name="row-radio-buttons-group"
-                                    value={adequabilidade}
-                                    onChange={(e) => setAdequabilidade(e.target.value)}
+                                    value={adequabilidade2}
+                                    onChange={(e) => setAdequabilidade2(e.target.value)}
                                 >
                                     <FormControlLabel control={<Radio />} value="Satisfatório" label="Satisfatório" />
                                     <FormControlLabel control={<Radio />} value="Insatisfatório" label="Insatisfatório" />
@@ -174,8 +172,8 @@ const CadastroLaudo = () => {
                                     aria-labelledby="demo-radio-buttons-group-label"
                                     defaultValue="female"
                                     name="radio-buttons-group"
-                                    value={epitelios}
-                                    onChange={(e) => setEpitelios(e.target.value)}
+                                    value={epitelios2}
+                                    onChange={(e) => setEpitelios2(e.target.value)}
                                 >
                                     <FormControlLabel value="Escamoso, Glandular" control={<Radio />} label="Escamoso, Glandular" />
                                     <FormControlLabel value="Escamoso, ausência de componente endocervical ou de zona de transformação" control={<Radio />} label="Escamoso, ausência de componente endocervical ou de zona de transformação" />
@@ -190,13 +188,10 @@ const CadastroLaudo = () => {
                                     aria-labelledby="demo-radio-buttons-group-label"
                                     defaultValue="female"
                                     name="radio-buttons-group"
-                                    value={alteracoes_celulares}
-                                    onChange={(e) => setAlteracoes(e.target.value)}
+                                    value={alteracoes_celulares2}
+                                    onChange={(e) => setAlteracoes2(e.target.value)}
                                 >
-                                    <FormControlLabel value="Inflamação" control={<Radio />} label="Inflamação" />
-                                    <FormControlLabel value="Cervite Linfocítica / Folicular" control={<Radio />} label="Cervite Linfocítica / Folicular" />
-                                    <FormControlLabel value="Radiação" control={<Radio />} label="Radiação" />
-                                    <FormControlLabel value="Reação ao dispositivo intrauterino (DIU)" control={<Radio />} label="Reação ao dispositivo intrauterino (DIU)" />
+                                    <FormControlLabel value="Dentro dos Limites da Normalidade" control={<Radio />} label="Dentro dos Limites da Normalidade" />
                                 </RadioGroup><br></br>
 
                                 <h5>* MICROBIOLOGIA</h5>
@@ -204,8 +199,8 @@ const CadastroLaudo = () => {
                                     aria-labelledby="demo-radio-buttons-group-label"
                                     defaultValue="female"
                                     name="radio-buttons-group"
-                                    value={microbiologia}
-                                    onChange={(e) => setMicrobiologia(e.target.value)}
+                                    value={microbiologia2}
+                                    onChange={(e) => setMicrobiologia2(e.target.value)}
                                 >
                                     <FormControlLabel value="Bacilos curtos" control={<Radio />} label="Bacilos curtos" />
                                     <FormControlLabel value="Bacilos curtos, Lactobacillus sp" control={<Radio />} label="Bacilos curtos, Lactobacillus sp" />
@@ -224,41 +219,21 @@ const CadastroLaudo = () => {
                                     <FormControlLabel value="Alterações celulares consistentes com Citomegalovírus" control={<Radio />} label="Alterações celulares consistentes com Citomegalovírus" />
                                 </RadioGroup><br></br>
 
-                                <h5>* ATIPIAS CELULARES</h5>
-                                <RadioGroup
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    name="row-radio-buttons-group"
-                                    value={atipias_celulares}
-                                    onChange={(e) => setAtipias(e.target.value)}
-                                >
-                                    <FormControlLabel value="Presente" control={<Radio />} label="Presente" />
-                                    <FormControlLabel value="Ausente" control={<Radio />} label="Ausente" />
-                                </RadioGroup><br></br>
-
-                                {/* <h5>* OBSERVAÇÃO</h5> */}
-                                {/*VERIFICAR ESSA OBSERVAÇÃO  */}
-
                                 <h5>* CONCLUSÃO</h5>
                                 <RadioGroup
                                     aria-labelledby="demo-radio-buttons-group-label"
                                     defaultValue="female"
                                     name="radio-buttons-group"
-                                    value={conclusao}
-                                    onChange={(e) => setConclusao(e.target.value)}
+                                    value={conclusao2}
+                                    onChange={(e) => setConclusao2(e.target.value)}
                                 >
-                                    <FormControlLabel value="Citologia inflamatória discreta" control={<Radio />} label="Citologia inflamatória discreta" />
-                                    <FormControlLabel value="Citologia inflamatória moderada" control={<Radio />} label="Citologia inflamatória moderada" />
-                                    <FormControlLabel value="Citologia inflamatória acentuada" control={<Radio />} label="Citologia inflamatória acentuada" />
-                                    <FormControlLabel value="Citologia inflamatória discreta atrófica" control={<Radio />} label="Citologia inflamatória discreta atrófica" />
-                                    <FormControlLabel value="Citologia inflamatória moderada atrófica" control={<Radio />} label="Citologia inflamatória moderada atrófica" />
-                                    <FormControlLabel value="Citologia inflamatória acentuada atrófica" control={<Radio />} label="Citologia inflamatória acentuada atrófica" />
+                                    <FormControlLabel value="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." control={<Radio />} label="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." />
                                 </RadioGroup><br></br>
                             </FormControl>
-                        </div><br></br>
+                        </div>
                     </Box>
                     <Stack direction="row" spacing={2}>
-                        <Button onClick={postData} variant="contained">CADASTRAR</Button>
+                        <Button onClick={postData2} variant="contained">CADASTRAR</Button>
                         <Button onClick={Home} variant="contained">VOLTAR</Button>
                     </Stack>
                 </form>
@@ -267,4 +242,4 @@ const CadastroLaudo = () => {
     );
 }
 
-export default CadastroLaudo;
+export default CadastroSemAlteracoes;

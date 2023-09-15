@@ -14,25 +14,25 @@ import ButtonExcluir from '../../components/ButtonExcluir';
 import ButtonPDF from '../../components/ButtonPDF';
 import { useNavigate } from "react-router-dom";
 
-const ConsultLaudo = () => {
+const ConsultaSemAlteracoes = () => {
 
     const navigate = useNavigate();
     const [data, setDate] = useState([])
 
-    const EditLaudo = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
-        navigate("/edit-laudo", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
+    const EditLaudo2 = (nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2) => {
+        navigate("/edit-sem-alteracoes", {state:{nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2}});
     }
 
     useEffect(() => {
-        api.get('listPaciente')
+        api.get('listPaciente2')
             .then(res => {
                 // console.log("Teste...", res.data.result)
                 setDate(res.data.result)
             }).catch(err => console.log(err))
     }, []);
 
-    const handleDelete = (id_paciente) => {
-        api.delete(`/del-paciente/${id_paciente}`)
+    const handleDelete2 = (id_paciente2) => {
+        api.delete(`/del-paciente2/${id_paciente2}`)
             .then(res => {
                 // console.log('Deletado!!!', res.data.result)
                 alert('Paciente Deletado!');
@@ -43,7 +43,7 @@ const ConsultLaudo = () => {
 
     return (
         <C.Container>
-            <C.Label>CONSULTA LAUDO CLÍNICO COM ALTERAÇÕES CELULARES</C.Label>
+            <C.Label>CONSULTA LAUDO CLÍNICO SEM ALTERAÇÕES CELULARES</C.Label>
             <C.Content >
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -63,14 +63,14 @@ const ConsultLaudo = () => {
                             {data.map((data, index) => (
                                 <TableRow key={index}>
                                     <TableCell component="th" scope="row">
-                                        {data.nome}
+                                        {data.nome2}
                                     </TableCell>
-                                    <TableCell align="right">{data.idade}</TableCell>
-                                    <TableCell align="right">{data.registro}</TableCell>
-                                    <TableCell align="right">{data.unidade}</TableCell>
-                                    <TableCell align="right">{data.data_coleta}</TableCell>
-                                    <TableCell align="right"><ButtonEdit onClick={() => EditLaudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} Text="Editar" /></TableCell>
-                                    <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(data.id_paciente)} Text="Excluir" /></TableCell>
+                                    <TableCell align="right">{data.idade2}</TableCell>
+                                    <TableCell align="right">{data.registro2}</TableCell>
+                                    <TableCell align="right">{data.unidade2}</TableCell>
+                                    <TableCell align="right">{data.data_coleta2}</TableCell>
+                                    <TableCell align="right"><ButtonEdit onClick={() => EditLaudo2(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} Text="Editar" /></TableCell>
+                                    <TableCell align="right"><ButtonExcluir onClick={() => handleDelete2(data.id_paciente2)} Text="Excluir" /></TableCell>
                                     <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => PacientePDF()}/></TableCell>
                                 </TableRow>
                             ))}
@@ -82,4 +82,4 @@ const ConsultLaudo = () => {
     );
 }
 
-export default ConsultLaudo;
+export default ConsultaSemAlteracoes;

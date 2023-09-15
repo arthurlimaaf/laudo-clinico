@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import * as C from "./styles";
 import api from "../../api/api";
-// import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -237,7 +233,6 @@ const EditaLaudo = () => {
                                 >
                                     <FormControlLabel value="Presente" control={<Radio />} label="Presente" />
                                     <FormControlLabel value="Ausente" control={<Radio />} label="Ausente" />
-                                    <FormControlLabel value="NULL" control={<Radio />} label="Não" />
                                 </RadioGroup><br></br>
 
                                 {/* <h5>* OBSERVAÇÃO</h5> */}
@@ -257,7 +252,6 @@ const EditaLaudo = () => {
                                     <FormControlLabel value="Citologia inflamatória discreta atrófica" control={<Radio />} label="Citologia inflamatória discreta atrófica" />
                                     <FormControlLabel value="Citologia inflamatória moderada atrófica" control={<Radio />} label="Citologia inflamatória moderada atrófica" />
                                     <FormControlLabel value="Citologia inflamatória acentuada atrófica" control={<Radio />} label="Citologia inflamatória acentuada atrófica" />
-                                    <FormControlLabel value="NULL" control={<Radio />} label="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." />
                                 </RadioGroup><br></br>
                             </FormControl>                            
                         </div>
