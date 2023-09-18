@@ -54,7 +54,7 @@ const EditaLaudo = () => {
          })
         .then(res => {
             alert('Laudo Paciente Atualizado!')
-            navigate('/consult-laudo')
+            navigate('/home')
             // console.log(res);
     
         } ).catch((err) => {
@@ -195,7 +195,6 @@ const EditaLaudo = () => {
                                     <FormControlLabel value="Cervite Linfocítica / Folicular" control={<Radio />} label="Cervite Linfocítica / Folicular" />
                                     <FormControlLabel value="Radiação" control={<Radio />} label="Radiação" />
                                     <FormControlLabel value="Reação ao dispositivo intrauterino (DIU)" control={<Radio />} label="Reação ao dispositivo intrauterino (DIU)" />
-                                    <FormControlLabel value="Dentro dos Limites da Normalidade" control={<Radio />} label="Dentro dos Limites da Normalidade" />
                                 </RadioGroup><br></br>
 
                                 <h5>* MICROBIOLOGIA</h5>

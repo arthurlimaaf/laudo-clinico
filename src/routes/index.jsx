@@ -8,6 +8,7 @@ import EditaLaudo from "../pages/EditaLaudo";
 import ConsultaSemAlteracoes from "../pages/ConsultaSemAlteracoes";
 import EditaSemAlteracoes from "../pages/EditaSemAlteracoes";
 import CadastroSemAlteracoes from "../pages/CadastroSemAlteracoes";
+import Laudo from "../pages/Reports/Laudo";
 
 const Private = ({ Item }) => {
     const signed = true;
@@ -20,16 +21,17 @@ const RoutesApp = () => {
     <BrowserRouter>
         <Fragment>
             <Routes>
-                <Route exact path="/home" element={<Private Item={Home} />} />
-                <Route exact path="/cad-laudo" element={<Private Item={CadastroLaudo} />} />
-                <Route exact path="/consult-laudo" element={<Private Item={ConsultaLaudo} />} />
-                <Route exact path="/edit-laudo" element={<Private Item={EditaLaudo} />} />
-                <Route exact path="/consult-sem-alteracoes" element={<Private Item={ConsultaSemAlteracoes} />} />
-                <Route exact path="/edit-sem-alteracoes" element={<Private Item={EditaSemAlteracoes} />} />
-                <Route exact path="/cad-sem-alteracoes" element={<Private Item={CadastroSemAlteracoes} />} />
+                <Route path="/home" element={<Private Item={Home} />} />
+                <Route path="/cad-laudo" element={<Private Item={CadastroLaudo} />} />
+                <Route path="/consult-laudo" element={<Private Item={ConsultaLaudo} />} />
+                <Route path="/edit-laudo" element={<Private Item={EditaLaudo} />} />
+                <Route path="/consult-sem-alteracoes" element={<Private Item={ConsultaSemAlteracoes} />} />
+                <Route path="/edit-sem-alteracoes" element={<Private Item={EditaSemAlteracoes} />} />
+                <Route path="/cad-sem-alteracoes" element={<Private Item={CadastroSemAlteracoes} />} />
+                <Route path="/laudo-pdf" element={<Private Item={Laudo} />} />
 
-                <Route path="/" element={<Login />} />
-                <Route path="*" element={<Login />} />
+                <Route exact path="/" element={<Login />} />
+                {/* <Route path="*" element={<Login />} /> */}
             </Routes>
         </Fragment>
     </BrowserRouter>

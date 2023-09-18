@@ -49,7 +49,7 @@ const EditaSemAlteracoes = () => {
          })
         .then(res => {
             alert('Laudo Paciente Atualizado!')
-            navigate('/consult-sem-alteracoes')
+            navigate('/home')
             // console.log(res);
     
         } ).catch((err) => {

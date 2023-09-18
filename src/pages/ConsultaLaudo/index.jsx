@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from "../../api/api";
-import PacientePDF from '../Reports/Laudo/laudo';
+import Laudo from '../Reports/Laudo';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,6 +13,7 @@ import * as C from "./styles";
 import ButtonExcluir from '../../components/ButtonExcluir';
 import ButtonPDF from '../../components/ButtonPDF';
 import { useNavigate } from "react-router-dom";
+// import PacientePDF from '../Reports/Laudo';
 
 const ConsultLaudo = () => {
 
@@ -21,6 +22,10 @@ const ConsultLaudo = () => {
 
     const EditLaudo = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
         navigate("/edit-laudo", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
+    }
+
+    const LaudoPDF = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
+        navigate({state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
     }
 
     useEffect(() => {
@@ -71,7 +76,7 @@ const ConsultLaudo = () => {
                                     <TableCell align="right">{data.data_coleta}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(data.id_paciente)} Text="Excluir" /></TableCell>
-                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => PacientePDF()}/></TableCell>
+                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={Laudo(LaudoPDF)}/></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

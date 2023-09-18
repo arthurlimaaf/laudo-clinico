@@ -1,8 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function PacientePDF(){
+const Laudo = () => {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [data, setDate] = useState(location.state)
+
+    const [nome, setNome] = useState(data.nome)
+    const [idade, setIdade] = useState(data.idade)
+    const [registro, setRegistro] = useState(data.registro)
+    const [unidade, setUnidade] = useState(data.unidade)
+    const [data_coleta, setData] = useState(data.data_coleta)
+    const [adequabilidade, setAdequabilidade] = useState(data.adequabilidade)
+    const [epitelios, setEpitelios] = useState(data.epitelios)
+    const [alteracoes_celulares, setAlteracoes] = useState(data.alteracoes_celulares)
+    const [microbiologia, setMicrobiologia] = useState(data.microbiologia)
+    const [atipias_celulares, setAtipias] = useState(data.atipias_celulares)
+    const [conclusao, setConclusao] = useState(data.conclusao)
+
+    // useEffect(() => {
+    //     alert('PDF Gerado!');
+    //     navigate('/consult-laudo');
+    // }, []);
 
     // var image = 'data:image/jpeg;base64,public/assinat/assinatura.jpg';
 
@@ -26,12 +49,12 @@ function PacientePDF(){
             alignment: 'justify',
 			columns: [
                 {
-                    text: 'Paciente:',
+                    text: `Paciente: ${nome}`,
                     fontSize: 12,
                     margin: [20, -600, 0, 30]
                 },
                 {
-                    text: 'Registro: Colpocitologia',
+                    text: `Registro: ${data.registro}`,
                     fontSize: 12,
                     margin: [130, -600, 0, 30]
                 },
@@ -42,12 +65,12 @@ function PacientePDF(){
             alignment: 'justify',
 			columns: [
                 {
-                    text: 'Idade:',
+                    text: `Idade: ${data.idade}`,
                     fontSize: 12,
                     margin: [20, -570, 0, 30]
                 },
                 {
-                    text: 'Data Coleta: ',
+                    text: `Data Coleta: ${data.data_coleta}`,
                     fontSize: 12,
                     margin: [130, -570, 0, 30]
                 },
@@ -99,7 +122,7 @@ function PacientePDF(){
 
         //RESPOSTA PERGUNTA 1
         {
-			text: 'Satisfatória.',
+			text: `${data.adequabilidade}`,
             fontSize: 12,
             bold: false,
             margin: [20, 10, 0, 0]
@@ -114,7 +137,7 @@ function PacientePDF(){
 
         //RESPOSTA DA PERGUNTA 2
         {
-			text: 'Escamoso, glandular.',
+			text: `${data.epitelios}`,
             fontSize: 12,
             bold: false,
             margin: [20, 10, 0, 0]
@@ -129,7 +152,7 @@ function PacientePDF(){
 
         //RESPOSTA DA PERGUNTA 3
         {
-			text: 'Inflamação.',
+			text: `${data.alteracoes_celulares}`,
             fontSize: 12,
             bold: false,
             margin: [20, 10, 0, 0]
@@ -144,7 +167,7 @@ function PacientePDF(){
 
         //RESPOSTA DA PERGUNTA 4
         {
-			text: 'Lactobacilos, Bastonetes curtos.',
+			text: `${data.microbiologia}`,
             fontSize: 12,
             bold: false,
             margin: [20, 10, 0, 0]
@@ -159,7 +182,7 @@ function PacientePDF(){
 
         //RESPOSTA DA PERGUNTA 5
         {
-			text: 'Ausente.',
+			text: `${data.atipias_celulares}`,
             fontSize: 12,
             bold: false,
             margin: [20, 10, 0, 0]
@@ -174,7 +197,7 @@ function PacientePDF(){
 
         //RESPOSTA DA PERGUNTA 5
         {
-			text: 'Ausente.',
+			text: `${data.conclusao}`,
             fontSize: 12,
             bold: false,
             margin: [20, 10, 0, 0]
@@ -239,4 +262,4 @@ function PacientePDF(){
 
 }
 
-export default PacientePDF;
+export default Laudo;
