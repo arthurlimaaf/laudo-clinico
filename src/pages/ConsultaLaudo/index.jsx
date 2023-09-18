@@ -24,8 +24,8 @@ const ConsultLaudo = () => {
         navigate("/edit-laudo", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
     }
 
-    const LaudoPDF = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
-        navigate({state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
+    const Laudo = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
+        navigate("/laudo-pdf", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
     }
 
     useEffect(() => {
@@ -76,7 +76,7 @@ const ConsultLaudo = () => {
                                     <TableCell align="right">{data.data_coleta}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(data.id_paciente)} Text="Excluir" /></TableCell>
-                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={Laudo(LaudoPDF)}/></TableCell>
+                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => Laudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)}/></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

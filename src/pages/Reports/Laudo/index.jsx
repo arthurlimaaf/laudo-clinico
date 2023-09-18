@@ -1,26 +1,14 @@
 import React, { useState, useEffect } from "react";
 import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const Laudo = () => {
 
     const location = useLocation();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [data, setDate] = useState(location.state)
-
-    const [nome, setNome] = useState(data.nome)
-    const [idade, setIdade] = useState(data.idade)
-    const [registro, setRegistro] = useState(data.registro)
-    const [unidade, setUnidade] = useState(data.unidade)
-    const [data_coleta, setData] = useState(data.data_coleta)
-    const [adequabilidade, setAdequabilidade] = useState(data.adequabilidade)
-    const [epitelios, setEpitelios] = useState(data.epitelios)
-    const [alteracoes_celulares, setAlteracoes] = useState(data.alteracoes_celulares)
-    const [microbiologia, setMicrobiologia] = useState(data.microbiologia)
-    const [atipias_celulares, setAtipias] = useState(data.atipias_celulares)
-    const [conclusao, setConclusao] = useState(data.conclusao)
 
     // useEffect(() => {
     //     alert('PDF Gerado!');
@@ -49,7 +37,7 @@ const Laudo = () => {
             alignment: 'justify',
 			columns: [
                 {
-                    text: `Paciente: ${nome}`,
+                    text: `Paciente: ${data.nome}`,
                     fontSize: 12,
                     margin: [20, -600, 0, 30]
                 },
@@ -241,25 +229,15 @@ const Laudo = () => {
         ]
     }
 
-    const rodape = [];
-
     const docDefinitios = {
         pageSize: 'A4',
         pageMargins: [15, 50, 15, 40],
 
         header: [reportTitle],
         content: [details],
-        // styles: {
-        //     header: {
-        //         bold: true,
-        //         fontSize: 15
-        //     }
-        // },
         footer: Rodape
     }
-
     pdfMake.createPdf(docDefinitios).download();
-
 }
 
 export default Laudo;
