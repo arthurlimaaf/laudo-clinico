@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from "../../api/api";
-import PacientePDF from '../Reports/Laudo';
+// import PacientePDF from '../Reports/Laudo';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -71,7 +71,7 @@ const ConsultaSemAlteracoes = () => {
                                     <TableCell align="right">{data.data_coleta2}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo2(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete2(data.id_paciente2)} Text="Excluir" /></TableCell>
-                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => PacientePDF()}/></TableCell>
+                                    {/* <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => PacientePDF()}/></TableCell> */}
                                 </TableRow>
                             ))}
                         </TableBody>

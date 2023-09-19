@@ -8,7 +8,8 @@ import EditaLaudo from "../pages/EditaLaudo";
 import ConsultaSemAlteracoes from "../pages/ConsultaSemAlteracoes";
 import EditaSemAlteracoes from "../pages/EditaSemAlteracoes";
 import CadastroSemAlteracoes from "../pages/CadastroSemAlteracoes";
-import Laudo from "../pages/Reports/Laudo";
+// import Laudo from "../pages/Reports/Laudo";
+import LaudoPDF from "../pages/LaudoPDF";
 
 const Private = ({ Item }) => {
     const signed = true;
@@ -28,7 +29,7 @@ const RoutesApp = () => {
                 <Route path="/consult-sem-alteracoes" element={<Private Item={ConsultaSemAlteracoes} />} />
                 <Route path="/edit-sem-alteracoes" element={<Private Item={EditaSemAlteracoes} />} />
                 <Route path="/cad-sem-alteracoes" element={<Private Item={CadastroSemAlteracoes} />} />
-                <Route path="/laudo-pdf" element={<Private Item={Laudo} />} />
+                <Route path="/laudo-pdf" element={<Private Item={LaudoPDF} />} />
 
                 <Route exact path="/" element={<Login />} />
                 {/* <Route path="*" element={<Login />} /> */}
