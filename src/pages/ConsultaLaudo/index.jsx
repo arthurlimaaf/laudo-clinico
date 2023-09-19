@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import api from "../../api/api";
-// import Laudo from '../Reports/Laudo';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,12 +12,10 @@ import * as C from "./styles";
 import ButtonExcluir from '../../components/ButtonExcluir';
 import ButtonPDF from '../../components/ButtonPDF';
 import { useNavigate } from "react-router-dom";
-import { useReactToPrint } from "react-to-print";
 // import PacientePDF from '../Reports/Laudo';
 
 const ConsultLaudo = () => {
 
-    const componentPDF = useRef();
     const navigate = useNavigate();
     const [data, setDate] = useState([])
 
@@ -26,9 +23,9 @@ const ConsultLaudo = () => {
         navigate("/edit-laudo", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
     }
 
-    // const LaudoPDF = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
-    //     navigate("/laudo-pdf", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
-    // }
+    const LaudoPDF = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
+        navigate("/laudo-pdf", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
+    }
 
     useEffect(() => {
         api.get('listPaciente')
@@ -48,18 +45,11 @@ const ConsultLaudo = () => {
             .catch(err => console.log(err))
     };
 
-    const generatePDF = useReactToPrint({
-        content: () => componentPDF.current,
-        documentTitle: "UserData",
-        onAfterPrint: () => alert("Data saved in PDF")
-    });
-
     return (
         <C.Container>
             <C.Label>CONSULTA LAUDO CLÍNICO COM ALTERAÇÕES CELULARES</C.Label>
             <C.Content >
                 <TableContainer component={Paper}>
-                    <div ref={componentPDF} style={{width: '100%'}}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
@@ -85,12 +75,11 @@ const ConsultLaudo = () => {
                                     <TableCell align="right">{data.data_coleta}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(data.id_paciente)} Text="Excluir" /></TableCell>
-                                    <TableCell align="right"><ButtonPDF Text=" Gerar PDF" onClick={generatePDF}/></TableCell>
+                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDF(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)}/></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
-                    </div>
                 </TableContainer>
             </C.Content>
         </C.Container>

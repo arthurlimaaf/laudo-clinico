@@ -1,102 +1,140 @@
 import React, { useState, useRef } from "react";
 import * as C from "./styles";
-import api from "../../api/api";
 import img_fundo from '../../../public/img_fundo.jpg';
+import assinatura from '../../../public/assinat/assinatura.jpg'
 import ButtonPDF from "../../components/ButtonPDF";
-import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import { useReactToPrint } from "react-to-print";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const LaudoPDF = () => {
-
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    }));
-
+    const location = useLocation();
+    const [data, setDate] = useState(location.state)
     const componentPDF = useRef();
     const navigate = useNavigate();
 
-    const [nome, setNome] = useState('')
-    const [idade, setIdade] = useState('')
-    const [registro, setRegistro] = useState('')
-    const [unidade, setUnidade] = useState('')
-    const [data_coleta, setData] = useState(null)
-    const [adequabilidade, setAdequabilidade] = useState('')
-    const [epitelios, setEpitelios] = useState('')
-    const [alteracoes_celulares, setAlteracoes] = useState('')
-    const [microbiologia, setMicrobiologia] = useState('')
-    const [atipias_celulares, setAtipias] = useState('');
-    const [conclusao, setConclusao] = useState('');
-
-    const postData = (e) => {
-        e.preventDefault();
-        api.post('cad-paciente', {
-            nome,
-            idade,
-            registro: "Colpocitologia",
-            unidade,
-            data_coleta,
-            adequabilidade,
-            epitelios,
-            alteracoes_celulares,
-            microbiologia,
-            atipias_celulares,
-            conclusao
-        })
-            .then(res => {
-                alert('Laudo do Paciente Cadastrado!')
-                navigate('/home')
-                // console.log('Posting Data', res)
-
-            }).catch((err) => {
-                alert('Laudo do Paciente não Cadastrado!')
-            })
-    }
-
-    function Home() {
-        navigate('/home');
-    }
-
     const generatePDF = useReactToPrint({
         content: () => componentPDF.current,
-        documentTitle: "UserData",
-        onAfterPrint: () => alert("Data saved in PDF")
+        documentTitle: data.nome,
+        onAfterPrint: () => alert("Dados Salvos em PDF!"),
     });
+    
+    setTimeout(generatePDF)
 
     return (
         <div ref={componentPDF} style={{ width: '100%' }}>
             <C.Container>
+                <form>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <div>
+                            <C.ContainerNome>
+                                <figure id="container">
+                                    <img src={img_fundo} />
+                                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                                        <div>
+                                            <a id="Nome">Paciente: {data.nome}</a>
+                                            <a id="Idade">Idade: {data.idade}</a>
+                                        </div>
 
-            <C.ContainerImg>
-                <figure id="container">
-                    <img src={img_fundo} />
-                    <figcaption>Teste</figcaption>
-                </figure>
-            </C.ContainerImg>
-                {/* <label id="texto">TESTE</label> */}
+                                        <div>
+                                            <a id="Registro">Registro: {data.registro}</a>
+                                            <a id="Data">Data Coleta: {data.data_coleta}</a>
+                                        </div>
 
+                                        <div>
+                                            <h4 id="Titulo">LAUDO DO EXAME CITOPALÓGICOD DO COLO DO ÚTERO</h4>
+                                        </div>
 
+                                        <div>
+                                            <h4 id="Titulo2">DIAGNÓSTICO DESCRITIVO</h4>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Titulo3">TIPOS DE AMOSTRA</h5>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Titulo4">CITOLOGIA CONVENCIONAL</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Titulo5">--------------------------------------------------------------------------------------------------------------------------</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Adequabilidade">ADEQUABILIDADE</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Adeq">{data.adequabilidade}</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Epitelios">EPITÉLIOS REPRESENTADOS NA AMOSTRA</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Epit">{data.epitelios}</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Alteracoes_Celulares">ALTERAÇÕES CELULARES BENIGNAS REATIVAS OU REPARATIVAS</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Alteracoes">{data.alteracoes_celulares}</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Microbiologia">MICROBIOLOGIA</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Micro">{data.microbiologia}</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Atipias">ATIPIAS CELULARES</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Atip">{data.atipias_celulares}</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Conclusao">CONCLUSÃO</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Conclu">{data.conclusao}</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Paragrafo1">NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO.</h5>
+                                        </div>
+
+                                        <div>
+                                            <img id="imagem" src={assinatura} />
+                                        </div>
+
+                                        <div>
+                                            <a id="Paragrafo2">Conferido, assinado e liberado eletronicamente por Cíntia Nicácio Portela CRF AM 1646</a>
+                                        </div>
+
+                                        <div>
+                                            <a id="Paragrafo3">Atenção: este laudo é uma análise subjetiva cuja colaboração é baseada em informações clínicas, laboratoriais e morfológicas, podendo o diagnóstico variar, na dependência dos dados obtidos, das técnicasempregadas, da evolução científica e do médico patologista. Tendo em vista que a sensibilidade e a especificidade da metodologia não são absolutas, discordâncias diagnósticas deverão serimediatamente comunicadas, postergando-se as medidas terapêuticas até que o caso seja efetivamente elucidado.</a>
+                                        </div>
+                                    </Box>
+                                </figure>
+                            </C.ContainerNome>
+
+                        </div>
+                    </Box>
+                </form>
+                
             </C.Container>
-            <ButtonPDF Text="PDF" onClick={generatePDF} />
+            
         </div>
     );
 }
