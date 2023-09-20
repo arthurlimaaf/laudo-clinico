@@ -8,7 +8,7 @@ import EditaLaudo from "../pages/EditaLaudo";
 import ConsultaSemAlteracoes from "../pages/ConsultaSemAlteracoes";
 import EditaSemAlteracoes from "../pages/EditaSemAlteracoes";
 import CadastroSemAlteracoes from "../pages/CadastroSemAlteracoes";
-// import Laudo from "../pages/Reports/Laudo";
+import LaudoPDFSemAlteracoes from "../pages/LaudoPDFSemAlteracoes";
 import LaudoPDF from "../pages/LaudoPDF";
 
 const Private = ({ Item }) => {
@@ -30,6 +30,7 @@ const RoutesApp = () => {
                 <Route path="/edit-sem-alteracoes" element={<Private Item={EditaSemAlteracoes} />} />
                 <Route path="/cad-sem-alteracoes" element={<Private Item={CadastroSemAlteracoes} />} />
                 <Route path="/laudo-pdf" element={<Private Item={LaudoPDF} />} />
+                <Route path="/laudo-pdf-sem-alteracoes" element={<Private Item={LaudoPDFSemAlteracoes} />} />
 
                 <Route exact path="/" element={<Login />} />
                 {/* <Route path="*" element={<Login />} /> */}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import api from "../../api/api";
-// import PacientePDF from '../Reports/Laudo';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,6 +12,7 @@ import * as C from "./styles";
 import ButtonExcluir from '../../components/ButtonExcluir';
 import ButtonPDF from '../../components/ButtonPDF';
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
 
 const ConsultaSemAlteracoes = () => {
 
@@ -20,7 +20,11 @@ const ConsultaSemAlteracoes = () => {
     const [data, setDate] = useState([])
 
     const EditLaudo2 = (nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2) => {
-        navigate("/edit-sem-alteracoes", {state:{nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2}});
+        navigate("/edit-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2 } });
+    }
+
+    const LaudoPDFSemAlteracoes = (nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2) => {
+        navigate("/laudo-pdf-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2 } });
     }
 
     useEffect(() => {
@@ -40,6 +44,10 @@ const ConsultaSemAlteracoes = () => {
             })
             .catch(err => console.log(err))
     };
+
+    function Home() {
+        navigate('/home');
+    }
 
     return (
         <C.Container>
@@ -71,13 +79,16 @@ const ConsultaSemAlteracoes = () => {
                                     <TableCell align="right">{data.data_coleta2}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo2(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete2(data.id_paciente2)} Text="Excluir" /></TableCell>
-                                    {/* <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => PacientePDF()}/></TableCell> */}
+                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDFSemAlteracoes(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </C.Content>
+            </C.Content><br></br>
+            <Button onClick={Home} variant="contained" disableElevation>
+                Voltar
+            </Button>
         </C.Container>
     );
 }

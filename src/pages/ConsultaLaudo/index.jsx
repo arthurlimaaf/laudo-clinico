@@ -12,7 +12,7 @@ import * as C from "./styles";
 import ButtonExcluir from '../../components/ButtonExcluir';
 import ButtonPDF from '../../components/ButtonPDF';
 import { useNavigate } from "react-router-dom";
-// import PacientePDF from '../Reports/Laudo';
+import Button from '@mui/material/Button';
 
 const ConsultLaudo = () => {
 
@@ -20,11 +20,11 @@ const ConsultLaudo = () => {
     const [data, setDate] = useState([])
 
     const EditLaudo = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
-        navigate("/edit-laudo", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
+        navigate("/edit-laudo", { state: { nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao } });
     }
 
     const LaudoPDF = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
-        navigate("/laudo-pdf", {state:{nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao}});
+        navigate("/laudo-pdf", { state: { nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao } });
     }
 
     useEffect(() => {
@@ -44,6 +44,10 @@ const ConsultLaudo = () => {
             })
             .catch(err => console.log(err))
     };
+
+    function Home() {
+        navigate('/home');
+    }
 
     return (
         <C.Container>
@@ -75,13 +79,16 @@ const ConsultLaudo = () => {
                                     <TableCell align="right">{data.data_coleta}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(data.id_paciente)} Text="Excluir" /></TableCell>
-                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDF(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)}/></TableCell>
+                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDF(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </C.Content>
+            </C.Content><br></br>
+            <Button onClick={Home} variant="contained" disableElevation>
+                Voltar
+            </Button>
         </C.Container>
     );
 }

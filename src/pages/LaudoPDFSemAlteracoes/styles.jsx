@@ -5,19 +5,17 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
     width: 100vw;
-    max-height: 350vh;
 `;
 
 export const ContainerNome = styled.div`
-    // display: inline-block;
+    display: block;
     position: relative;
 
     #Nome {
         position: absolute;
         top: 250px;
-        left: 50px;
+        left: 20px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -26,7 +24,7 @@ export const ContainerNome = styled.div`
     #Idade {
         position: absolute;
         top: 290px;
-        left: 50px;
+        left: 20px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -35,7 +33,7 @@ export const ContainerNome = styled.div`
     #Registro {
         position: absolute;
         top: 250px;
-        left: 630px;
+        left: 600px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -44,7 +42,7 @@ export const ContainerNome = styled.div`
     #Data {
         position: absolute;
         top: 290px;
-        left: 630px;
+        left: 600px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -53,7 +51,7 @@ export const ContainerNome = styled.div`
     #Titulo {
         position: absolute;
         top: 350px;
-        left: 210px;
+        left: 170px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -62,7 +60,7 @@ export const ContainerNome = styled.div`
     #Titulo2 {
         position: absolute;
         top: 380px;
-        left: 330px;
+        left: 280px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -71,7 +69,7 @@ export const ContainerNome = styled.div`
     #Titulo3 {
         position: absolute;
         top: 420px;
-        left: 80px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -80,7 +78,7 @@ export const ContainerNome = styled.div`
     #Titulo4 {
         position: absolute;
         top: 440px;
-        left: 80px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -88,8 +86,8 @@ export const ContainerNome = styled.div`
 
     #Titulo5 {
         position: absolute;
-        top: 480px;
-        left: 80px;
+        top: 460px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -98,7 +96,7 @@ export const ContainerNome = styled.div`
     #Adequabilidade {
         position: absolute;
         top: 490px;
-        left: 80px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -106,8 +104,8 @@ export const ContainerNome = styled.div`
 
     #Adeq {
         position: absolute;
-        top: 530px;
-        left: 80px;
+        top: 510px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -116,7 +114,7 @@ export const ContainerNome = styled.div`
     #Epitelios {
         position: absolute;
         top: 550px;
-        left: 80px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -124,8 +122,8 @@ export const ContainerNome = styled.div`
 
     #Epit {
         position: absolute;
-        top: 590px;
-        left: 80px;
+        top: 570px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -134,7 +132,7 @@ export const ContainerNome = styled.div`
     #Alteracoes_Celulares {
         position: absolute;
         top: 610px;
-        left: 80px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -142,8 +140,8 @@ export const ContainerNome = styled.div`
 
     #Alteracoes {
         position: absolute;
-        top: 650px;
-        left: 80px;
+        top: 630px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -152,7 +150,7 @@ export const ContainerNome = styled.div`
     #Microbiologia {
         position: absolute;
         top: 670px;
-        left: 80px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -160,8 +158,8 @@ export const ContainerNome = styled.div`
 
     #Micro {
         position: absolute;
-        top: 710px;
-        left: 80px;
+        top: 690px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -170,7 +168,7 @@ export const ContainerNome = styled.div`
     #Atipias {
         position: absolute;
         top: 730px;
-        left: 80px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -178,8 +176,8 @@ export const ContainerNome = styled.div`
 
     #Atip {
         position: absolute;
-        top: 770px;
-        left: 80px;
+        top: 750px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -187,8 +185,8 @@ export const ContainerNome = styled.div`
 
     #Conclusao {
         position: absolute;
-        top: 790px;
-        left: 80px;
+        top: 730px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -196,8 +194,8 @@ export const ContainerNome = styled.div`
 
     #Conclu {
         position: absolute;
-        top: 830px;
-        left: 80px;
+        top: 750px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -205,8 +203,8 @@ export const ContainerNome = styled.div`
 
     #Paragrafo1 {
         position: absolute;
-        top: 845px;
-        left: 80px;
+        top: 835px;
+        left: 40px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -214,8 +212,8 @@ export const ContainerNome = styled.div`
 
     #imagem {
         position: absolute;
-        top: 890px;
-        left: 590px;
+        top: 855px;
+        left: 550px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -223,8 +221,8 @@ export const ContainerNome = styled.div`
 
     #Paragrafo2 {
         position: absolute;
-        top: 970px;
-        left: 320px;
+        top: 955px;
+        left: 285px;
         font-size: 12px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -232,11 +230,10 @@ export const ContainerNome = styled.div`
 
     #Paragrafo3 {
         position: absolute;
-        top: 990px;
-        left: 80px;
-        right: 80px;
+        top: 980px;
+        left: 50px;
         font-size: 10px;
-        text-align: justify;
+        // text-align: justify;
         color: black;
         // text-shadow: 0px 0px 5px black;
     }

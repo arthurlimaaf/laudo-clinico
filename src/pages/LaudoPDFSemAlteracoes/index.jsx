@@ -7,7 +7,7 @@ import { useReactToPrint } from "react-to-print";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-const LaudoPDF = () => {
+const LaudoPDFSemAlteracoes = () => {
     const location = useLocation();
     const [data, setDate] = useState(location.state)
     const componentPDF = useRef();
@@ -15,14 +15,14 @@ const LaudoPDF = () => {
 
     const generatePDF = useReactToPrint({
         content: () => componentPDF.current,
-        documentTitle: data.nome,
+        documentTitle: data.nome2,
         onAfterPrint: () => alert("Dados Salvos em PDF!"),
     });
     
     setTimeout(generatePDF)
 
     return (
-        <div ref={componentPDF} style={{ width: '100%' }}>
+        <div ref={componentPDF} >
             <C.Container>
                 <form>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -32,13 +32,13 @@ const LaudoPDF = () => {
                                     <img src={img_fundo} />
                                     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                                         <div>
-                                            <a id="Nome">Paciente: {data.nome}</a>
-                                            <a id="Idade">Idade: {data.idade}</a>
+                                            <a id="Nome">Paciente: {data.nome2}</a>
+                                            <a id="Idade">Idade: {data.idade2}</a>
                                         </div>
 
                                         <div>
-                                            <a id="Registro">Registro: {data.registro}</a>
-                                            <a id="Data">Data Coleta: {data.data_coleta}</a>
+                                            <a id="Registro">Registro: {data.registro2}</a>
+                                            <a id="Data">Data Coleta: {data.data_coleta2}</a>
                                         </div>
 
                                         <div>
@@ -66,7 +66,7 @@ const LaudoPDF = () => {
                                         </div>
 
                                         <div>
-                                            <a id="Adeq">{data.adequabilidade}</a>
+                                            <a id="Adeq">{data.adequabilidade2}</a>
                                         </div>
 
                                         <div>
@@ -74,7 +74,7 @@ const LaudoPDF = () => {
                                         </div>
 
                                         <div>
-                                            <a id="Epit">{data.epitelios}</a>
+                                            <a id="Epit">{data.epitelios2}</a>
                                         </div>
 
                                         <div>
@@ -82,7 +82,7 @@ const LaudoPDF = () => {
                                         </div>
 
                                         <div>
-                                            <a id="Alteracoes">{data.alteracoes_celulares}</a>
+                                            <a id="Alteracoes">{data.alteracoes_celulares2}</a>
                                         </div>
 
                                         <div>
@@ -90,15 +90,7 @@ const LaudoPDF = () => {
                                         </div>
 
                                         <div>
-                                            <a id="Micro">{data.microbiologia}</a>
-                                        </div>
-
-                                        <div>
-                                            <h5 id="Atipias">ATIPIAS CELULARES</h5>
-                                        </div>
-
-                                        <div>
-                                            <a id="Atip">{data.atipias_celulares}</a>
+                                            <a id="Micro">{data.microbiologia2}</a>
                                         </div>
 
                                         <div>
@@ -106,11 +98,7 @@ const LaudoPDF = () => {
                                         </div>
 
                                         <div>
-                                            <a id="Conclu">{data.conclusao}</a>
-                                        </div>
-
-                                        <div>
-                                            <h5 id="Paragrafo1">NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO.</h5>
+                                            <a id="Conclu">{data.conclusao2}</a>
                                         </div>
 
                                         <div>
@@ -138,4 +126,4 @@ const LaudoPDF = () => {
     );
 }
 
-export default LaudoPDF;
+export default LaudoPDFSemAlteracoes;
