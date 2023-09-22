@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from '../../components/Button';
 import Button2 from '../../components/Button2';
-// import icct from '../../../src/icct-logo.png';
 import * as C from "./styles";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +20,11 @@ const Home = () => {
         navigate('/consult-laudo')
     }
 
+    const handleLogout = async (e) => {
+        e.preventDefault();
+        navigate('/')
+    }
+
     return (
         <C.Container>
             {/* <img src={icct} alt="" /> */}
@@ -30,6 +34,8 @@ const Home = () => {
                 <Button2 Text="CONSULTAR LAUDO PACIENTE (COM ALTERAÇÕES CELULARES)" onClick={() => navigate('/consult-laudo')} />
                 <Button Text="CADASTRAR LAUDO PACIENTE (SEM ALTERAÇÕES CELULARES)" onClick={() => navigate('/cad-sem-alteracoes')} />
                 <Button2 Text="CONSULTAR LAUDO PACIENTE (SEM ALTERAÇÕES CELULARES)" onClick={() => navigate('/consult-sem-alteracoes')} />
+
+                <Button Text="Sair" onClick={(e) => handleLogout(e)} />
             </C.Content>
         </C.Container>
     );

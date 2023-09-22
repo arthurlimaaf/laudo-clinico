@@ -49,6 +49,27 @@ const ConsultLaudo = () => {
         navigate('/home');
     }
 
+    // function teste() {
+    //     let str = '12345'
+    //     let str2 = str.substring(0, 5)
+    //     console.log(str2)
+
+    // }
+
+    {data.map((data, index, dataCriada, dataFormatada) => (
+        data.data_coleta = data.data_coleta.slice(0, 10),
+        // console.log(data.data_coleta)
+
+        index = data.data_coleta,
+
+        dataCriada = new Date(index),
+
+        dataFormatada = dataCriada.toLocaleDateString('pt-BR', {
+            timeZone: 'UTC',
+        }),
+        console.log(dataFormatada)
+    ))}
+
     return (
         <C.Container>
             <C.Label>CONSULTA LAUDO CLÍNICO COM ALTERAÇÕES CELULARES</C.Label>

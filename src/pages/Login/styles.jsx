@@ -6,8 +6,8 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    height: 100vh;
-    width: 205vh;
+    height: 97vh;
+    width: 198vh;
 `;
 
 export const Content = styled.div`
@@ -19,7 +19,7 @@ export const Content = styled.div`
     width: 100%;
     box-shadow: 0 1px 2px #0003;
     background-color: white;
-    max-width: 400px;
+    max-width: 300px;
     padding: 30px;
     border-radius: 5px;
 `;

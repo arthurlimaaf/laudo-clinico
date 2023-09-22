@@ -139,6 +139,7 @@ const CadastroLaudo = () => {
                             <FormControl fullWidth>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} >
                                     <DatePicker value={data_coleta}
+                                        format="DD-MM-YYYY"
                                         onChange={(e) => setData(e)} />
                                 </LocalizationProvider>
                             </FormControl>
