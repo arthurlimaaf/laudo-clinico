@@ -14,8 +14,12 @@ import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import dayjs from "dayjs";
 
 const EditaLaudo = () => {
 
@@ -132,15 +136,15 @@ const EditaLaudo = () => {
                         </div>
 
                         <div>
-                        <TextField
-                                sx={{ m: 1, width: '18ch' }}
-                                label="Data Coleta:"
-                                id="standard-size-normal"
-                                variant="standard"
-                                value={data_coleta} 
-                                onChange={e => setData(e.target.value)}
-                            />
+                            <FormControl fullWidth>
+                                <LocalizationProvider dateAdapter={AdapterDayjs} >
+                                    <DatePicker value={dayjs(data_coleta)}
+                                        format="DD-MM-YYYY"
+                                        onChange={e => setData(e)} />
+                                </LocalizationProvider>
+                            </FormControl>
                         </div>
+
                         <C.Label>LAUDO DO EXAME CITOPATOLÓGICO DO COLO DO ÚTERO</C.Label>
                         <C.Label>DIAGNÓSTICO DESCRITIVO</C.Label>
 

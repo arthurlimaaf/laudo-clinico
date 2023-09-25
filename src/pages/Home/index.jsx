@@ -28,8 +28,8 @@ const Home = () => {
     return (
         <C.Container>
             {/* <img src={icct} alt="" /> */}
-            <C.Label>LAUDO CLÍNICO</C.Label>
             <C.Content >
+                <C.Label>LAUDO CLÍNICO</C.Label>
                 <Button Text="CADASTRAR LAUDO PACIENTE (COM ALTERAÇÕES CELULARES)" onClick={() => navigate('/cad-laudo')} />
                 <Button2 Text="CONSULTAR LAUDO PACIENTE (COM ALTERAÇÕES CELULARES)" onClick={() => navigate('/consult-laudo')} />
                 <Button Text="CADASTRAR LAUDO PACIENTE (SEM ALTERAÇÕES CELULARES)" onClick={() => navigate('/cad-sem-alteracoes')} />

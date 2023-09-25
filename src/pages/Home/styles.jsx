@@ -7,7 +7,7 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 10px;
     height: 97vh;
-    width: 196vh;
+    width: 99vw;
 `;
 
 export const Content = styled.div`

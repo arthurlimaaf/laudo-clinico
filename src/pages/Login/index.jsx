@@ -39,10 +39,10 @@ const Signin = () => {
 
   return (
     <C.Container>
-      <C.Label>LAUDO CLÍNICO</C.Label>
         <div>
           <form>
             <C.Content >
+              <C.Label>LAUDO CLÍNICO</C.Label>
               <Input
                 type="text"
                 placeholder="Nome"

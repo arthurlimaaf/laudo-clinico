@@ -23,8 +23,8 @@ const ConsultaSemAlteracoes = () => {
         navigate("/edit-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2 } });
     }
 
-    const LaudoPDFSemAlteracoes = (nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2) => {
-        navigate("/laudo-pdf-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2 } });
+    const LaudoPDFSemAlteracoes = (nome2, idade2, registro2, unidade2, dataFormatada, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2) => {
+        navigate("/laudo-pdf-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, dataFormatada, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2 } });
     }
 
     useEffect(() => {
@@ -51,8 +51,8 @@ const ConsultaSemAlteracoes = () => {
 
     return (
         <C.Container>
-            <C.Label>CONSULTA LAUDO CLÍNICO SEM ALTERAÇÕES CELULARES</C.Label>
             <C.Content >
+            <C.Label>CONSULTA LAUDO CLÍNICO SEM ALTERAÇÕES CELULARES</C.Label>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
@@ -68,7 +68,16 @@ const ConsultaSemAlteracoes = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {data.map((data, index) => (
+                            {data.map((data, index, dataInicial, dataCriada, dataFormatada) => (
+                                data.data_coleta2 = data.data_coleta2.slice(0, 10),
+
+                                dataInicial = data.data_coleta2,
+
+                                dataCriada = new Date(dataInicial),
+
+                                dataFormatada = dataCriada.toLocaleDateString('pt-BR', {
+                                    timeZone: 'UTC',
+                                }),
                                 <TableRow key={index}>
                                     <TableCell component="th" scope="row">
                                         {data.nome2}
@@ -76,10 +85,10 @@ const ConsultaSemAlteracoes = () => {
                                     <TableCell align="right">{data.idade2}</TableCell>
                                     <TableCell align="right">{data.registro2}</TableCell>
                                     <TableCell align="right">{data.unidade2}</TableCell>
-                                    <TableCell align="right">{data.data_coleta2}</TableCell>
+                                    <TableCell align="right">{dataFormatada}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo2(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete2(data.id_paciente2)} Text="Excluir" /></TableCell>
-                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDFSemAlteracoes(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} /></TableCell>
+                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDFSemAlteracoes(data.nome2, data.idade2, data.registro2, data.unidade2, dataFormatada, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

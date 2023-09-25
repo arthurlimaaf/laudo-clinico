@@ -38,7 +38,7 @@ const LaudoPDFSemAlteracoes = () => {
 
                                         <div>
                                             <a id="Registro">Registro: {data.registro2}</a>
-                                            <a id="Data">Data Coleta: {data.data_coleta2}</a>
+                                            <a id="Data">Data Coleta: {data.dataFormatada}</a>
                                         </div>
 
                                         <div>
@@ -62,7 +62,7 @@ const LaudoPDFSemAlteracoes = () => {
                                         </div>
 
                                         <div>
-                                            <h5 id="Adequabilidade">ADEQUABILIDADE</h5>
+                                            <h5 id="Adequabilidade">ADEQUABILIDADE DA AMOSTRA</h5>
                                         </div>
 
                                         <div>

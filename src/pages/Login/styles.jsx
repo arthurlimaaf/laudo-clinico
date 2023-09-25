@@ -6,8 +6,8 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    height: 97vh;
-    width: 198vh;
+    height: 90vh;
+    width: 99vw;
 `;
 
 export const Content = styled.div`

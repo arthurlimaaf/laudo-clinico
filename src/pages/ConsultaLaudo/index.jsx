@@ -23,8 +23,8 @@ const ConsultLaudo = () => {
         navigate("/edit-laudo", { state: { nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao } });
     }
 
-    const LaudoPDF = (nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
-        navigate("/laudo-pdf", { state: { nome, idade, registro, unidade, data_coleta, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao } });
+    const LaudoPDF = (nome, idade, registro, unidade, dataFormatada, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao) => {
+        navigate("/laudo-pdf", { state: { nome, idade, registro, unidade, dataFormatada, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao } });
     }
 
     useEffect(() => {
@@ -49,31 +49,10 @@ const ConsultLaudo = () => {
         navigate('/home');
     }
 
-    // function teste() {
-    //     let str = '12345'
-    //     let str2 = str.substring(0, 5)
-    //     console.log(str2)
-
-    // }
-
-    {data.map((data, index, dataCriada, dataFormatada) => (
-        data.data_coleta = data.data_coleta.slice(0, 10),
-        // console.log(data.data_coleta)
-
-        index = data.data_coleta,
-
-        dataCriada = new Date(index),
-
-        dataFormatada = dataCriada.toLocaleDateString('pt-BR', {
-            timeZone: 'UTC',
-        }),
-        console.log(dataFormatada)
-    ))}
-
     return (
         <C.Container>
-            <C.Label>CONSULTA LAUDO CLÍNICO COM ALTERAÇÕES CELULARES</C.Label>
             <C.Content >
+            <C.Label>CONSULTA LAUDO CLÍNICO COM ALTERAÇÕES CELULARES</C.Label>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
@@ -89,7 +68,18 @@ const ConsultLaudo = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {data.map((data, index) => (
+                            {data.map((data, index, dataInicial, dataCriada, dataFormatada) => (
+                                data.data_coleta = data.data_coleta.slice(0, 10),
+
+                                dataInicial = data.data_coleta,
+
+                                dataCriada = new Date(dataInicial),
+
+                                dataFormatada = dataCriada.toLocaleDateString('pt-BR', {
+                                    timeZone: 'UTC',
+                                }),
+                                // console.log(dataFormatada),
+
                                 <TableRow key={index}>
                                     <TableCell component="th" scope="row">
                                         {data.nome}
@@ -97,16 +87,16 @@ const ConsultLaudo = () => {
                                     <TableCell align="right">{data.idade}</TableCell>
                                     <TableCell align="right">{data.registro}</TableCell>
                                     <TableCell align="right">{data.unidade}</TableCell>
-                                    <TableCell align="right">{data.data_coleta}</TableCell>
+                                    <TableCell align="right">{dataFormatada}</TableCell>
                                     <TableCell align="right"><ButtonEdit onClick={() => EditLaudo(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} Text="Editar" /></TableCell>
                                     <TableCell align="right"><ButtonExcluir onClick={() => handleDelete(data.id_paciente)} Text="Excluir" /></TableCell>
-                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDF(data.nome, data.idade, data.registro, data.unidade, data.data_coleta, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} /></TableCell>
+                                    <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDF(data.nome, data.idade, data.registro, data.unidade, dataFormatada, data.adequabilidade, data.epitelios, data.alteracoes_celulares, data.microbiologia, data.atipias_celulares, data.conclusao)} /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </C.Content><br></br>
+            </C.Content>
             <Button onClick={Home} variant="contained" disableElevation>
                 Voltar
             </Button>

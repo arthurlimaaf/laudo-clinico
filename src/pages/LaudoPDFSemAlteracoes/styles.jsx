@@ -5,7 +5,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100vw;
+    width: 98vw;
 `;
 
 export const ContainerNome = styled.div`
@@ -15,7 +15,7 @@ export const ContainerNome = styled.div`
     #Nome {
         position: absolute;
         top: 250px;
-        left: 50px;
+        left: 35px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -24,7 +24,7 @@ export const ContainerNome = styled.div`
     #Idade {
         position: absolute;
         top: 290px;
-        left: 50px;
+        left: 35px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -33,7 +33,7 @@ export const ContainerNome = styled.div`
     #Registro {
         position: absolute;
         top: 250px;
-        left: 630px;
+        left: 590px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -42,7 +42,7 @@ export const ContainerNome = styled.div`
     #Data {
         position: absolute;
         top: 290px;
-        left: 630px;
+        left: 590px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -51,7 +51,7 @@ export const ContainerNome = styled.div`
     #Titulo {
         position: absolute;
         top: 350px;
-        left: 210px;
+        left: 190px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -60,7 +60,7 @@ export const ContainerNome = styled.div`
     #Titulo2 {
         position: absolute;
         top: 380px;
-        left: 330px;
+        left: 290px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -69,7 +69,7 @@ export const ContainerNome = styled.div`
     #Titulo3 {
         position: absolute;
         top: 420px;
-        left: 80px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -78,7 +78,7 @@ export const ContainerNome = styled.div`
     #Titulo4 {
         position: absolute;
         top: 440px;
-        left: 80px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -86,8 +86,8 @@ export const ContainerNome = styled.div`
 
     #Titulo5 {
         position: absolute;
-        top: 480px;
-        left: 80px;
+        top: 460px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -96,7 +96,7 @@ export const ContainerNome = styled.div`
     #Adequabilidade {
         position: absolute;
         top: 490px;
-        left: 80px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -104,8 +104,8 @@ export const ContainerNome = styled.div`
 
     #Adeq {
         position: absolute;
-        top: 530px;
-        left: 80px;
+        top: 510px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -114,7 +114,7 @@ export const ContainerNome = styled.div`
     #Epitelios {
         position: absolute;
         top: 550px;
-        left: 80px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -122,8 +122,8 @@ export const ContainerNome = styled.div`
 
     #Epit {
         position: absolute;
-        top: 590px;
-        left: 80px;
+        top: 570px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -132,7 +132,7 @@ export const ContainerNome = styled.div`
     #Alteracoes_Celulares {
         position: absolute;
         top: 610px;
-        left: 80px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -140,8 +140,8 @@ export const ContainerNome = styled.div`
 
     #Alteracoes {
         position: absolute;
-        top: 650px;
-        left: 80px;
+        top: 630px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -150,7 +150,7 @@ export const ContainerNome = styled.div`
     #Microbiologia {
         position: absolute;
         top: 670px;
-        left: 80px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -158,8 +158,8 @@ export const ContainerNome = styled.div`
 
     #Micro {
         position: absolute;
-        top: 710px;
-        left: 80px;
+        top: 690px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -186,7 +186,7 @@ export const ContainerNome = styled.div`
     #Conclusao {
         position: absolute;
         top: 730px;
-        left: 80px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -194,8 +194,8 @@ export const ContainerNome = styled.div`
 
     #Conclu {
         position: absolute;
-        top: 770px;
-        left: 80px;
+        top: 750px;
+        left: 50px;
         // font-size: 40px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -212,7 +212,7 @@ export const ContainerNome = styled.div`
 
     #imagem {
         position: absolute;
-        top: 855px;
+        top: 845px;
         left: 590px;
         // font-size: 40px;
         color: black;
@@ -222,7 +222,7 @@ export const ContainerNome = styled.div`
     #Paragrafo2 {
         position: absolute;
         top: 955px;
-        left: 320px;
+        left: 280px;
         font-size: 12px;
         color: black;
         // text-shadow: 0px 0px 5px black;
@@ -231,8 +231,8 @@ export const ContainerNome = styled.div`
     #Paragrafo3 {
         position: absolute;
         top: 980px;
-        left: 80px;
-        right: 80px;
+        left: 50px;
+        right: 40px;
         font-size: 10px;
         text-align: justify;
         color: black;
