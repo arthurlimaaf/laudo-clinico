@@ -80,7 +80,7 @@ const CadastroLaudo = () => {
                         <div>
                             <TextField
                                 sx={{ m: 1, width: '55ch' }}
-                                label="Paciente:"
+                                label="*Paciente:"
                                 id="standard-size-normal"
                                 variant="standard"
                                 value={nome}
@@ -89,7 +89,7 @@ const CadastroLaudo = () => {
 
                             <TextField
                                 sx={{ m: 1, width: '18ch' }}
-                                label="Idade:"
+                                label="*Idade:"
                                 id="standard-size-normal"
                                 variant="standard"
                                 value={idade}
@@ -100,7 +100,7 @@ const CadastroLaudo = () => {
                         <div>
                             <TextField
                                 sx={{ m: 1, width: '20ch' }}
-                                label="Registro:"
+                                label="*Registro:"
                                 id="standard-size-normal"
                                 // value="Colpocitologia"
                                 variant="standard"
@@ -117,7 +117,7 @@ const CadastroLaudo = () => {
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
                                         value={unidade}
-                                        label="Unidade"
+                                        label="*Unidade"
                                         onChange={(e) => setUnidade(e.target.value)}
                                     >
                                         <MenuItem value="Matriz">Matriz</MenuItem>
@@ -139,6 +139,7 @@ const CadastroLaudo = () => {
                             <FormControl fullWidth>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} >
                                     <DatePicker value={data_coleta}
+                                        label="Data Coleta"
                                         format="DD-MM-YYYY"
                                         onChange={(e) => setData(e)} />
                                 </LocalizationProvider>

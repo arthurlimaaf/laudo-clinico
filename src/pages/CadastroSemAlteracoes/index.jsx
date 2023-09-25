@@ -134,9 +134,11 @@ const CadastroSemAlteracoes = () => {
                         </div>
 
                         <div>
-                            <FormControl fullWidth>
+                        <FormControl fullWidth>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} >
                                     <DatePicker value={data_coleta2}
+                                        label="Data Coleta"
+                                        format="DD-MM-YYYY"
                                         onChange={(e) => setData2(e)} />
                                 </LocalizationProvider>
                             </FormControl>

@@ -134,6 +134,7 @@ const EditaSemAlteracoes = () => {
                             <FormControl fullWidth>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} >
                                     <DatePicker value={dayjs(data_coleta2)}
+                                        label="Data Coleta"
                                         format="DD-MM-YYYY"
                                         onChange={e => setData2(e)} />
                                 </LocalizationProvider>

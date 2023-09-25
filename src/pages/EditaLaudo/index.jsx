@@ -139,6 +139,7 @@ const EditaLaudo = () => {
                             <FormControl fullWidth>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} >
                                     <DatePicker value={dayjs(data_coleta)}
+                                        label="Data Coleta"
                                         format="DD-MM-YYYY"
                                         onChange={e => setData(e)} />
                                 </LocalizationProvider>

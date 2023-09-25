@@ -57,11 +57,11 @@ const ConsultaSemAlteracoes = () => {
                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>PACIENTE</TableCell>
-                                <TableCell align="right">IDADE</TableCell>
-                                <TableCell align="right">REGISTRO</TableCell>
-                                <TableCell align="right">UNIDADE</TableCell>
-                                <TableCell align="right">DATA COLETA</TableCell>
+                            <TableCell><h4>PACIENTE</h4></TableCell>
+                                <TableCell align="right"><h4>IDADE</h4></TableCell>
+                                <TableCell align="right"><h4>REGISTRO</h4></TableCell>
+                                <TableCell align="right"><h4>UNIDADE</h4></TableCell>
+                                <TableCell align="right"><h4>DATA COLETA</h4></TableCell>
                                 <TableCell align="right"></TableCell>
                                 <TableCell align="right"></TableCell>
                                 <TableCell align="right"></TableCell>
@@ -94,7 +94,7 @@ const ConsultaSemAlteracoes = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </C.Content><br></br>
+            </C.Content>
             <Button onClick={Home} variant="contained" disableElevation>
                 Voltar
             </Button>
