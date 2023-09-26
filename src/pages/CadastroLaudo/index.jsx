@@ -49,7 +49,7 @@ const CadastroLaudo = () => {
         e.preventDefault();
 
         try {
-            const response = await api.post('cad-paciente',
+            const response = await api.post('/cad-paciente',
                 JSON.stringify({
                     nome,
                     idade,

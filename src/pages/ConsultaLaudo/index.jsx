@@ -28,7 +28,7 @@ const ConsultLaudo = () => {
     }
 
     useEffect(() => {
-        api.get('listPaciente')
+        api.get('/listPaciente')
             .then(res => {
                 // console.log("Teste...", res.data.result)
                 setDate(res.data.result)
