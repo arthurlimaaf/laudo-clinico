@@ -43,30 +43,43 @@ const CadastroLaudo = () => {
     const [atipias_celulares, setAtipias] = useState('');
     const [conclusao, setConclusao] = useState('');
 
-    const postData = (e) => {
-        e.preventDefault();
-        api.post('cad-paciente', {
-            nome,
-            idade,
-            registro: "Colpocitologia",
-            unidade,
-            data_coleta,
-            adequabilidade,
-            epitelios,
-            alteracoes_celulares,
-            microbiologia,
-            atipias_celulares,
-            conclusao
-        })
-            .then(res => {
-                alert('Laudo do Paciente Cadastrado!')
-                navigate('/home')
-                // console.log('Posting Data', res)
+    const [error, setError] = useState(false);
 
-            }).catch((err) => {
-                alert('Laudo do Paciente não Cadastrado!')
-            })
-    }
+    const postData = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await api.post('cad-paciente',
+                JSON.stringify({
+                    nome,
+                    idade,
+                    registro: "Colpocitologia",
+                    unidade,
+                    data_coleta,
+                    adequabilidade,
+                    epitelios,
+                    alteracoes_celulares,
+                    microbiologia,
+                    atipias_celulares,
+                    conclusao
+                }),
+                {
+                    headers: { 'Content-Type': 'application/json' }
+                }
+            );
+
+            alert('Laudo do Paciente Cadastrado!')
+            navigate('/home')
+
+        } catch (error) {
+            if (!error?.response) {
+                setError('Erro ao acessar o servidor');
+            } else if (error.response.status == 401) {
+                alert('Laudo não cadastrado. Verificar se todos os campos foram preenchidos!')
+                // setError('Usuario ou senha inválidos');
+            }
+        }
+    };
 
     function Home() {
         navigate('/home');

@@ -42,29 +42,42 @@ const CadastroSemAlteracoes = () => {
     const [microbiologia2, setMicrobiologia2] = useState('')
     const [conclusao2, setConclusao2] = useState('');
 
-    const postData2 = (e) => {
-        e.preventDefault();
-        api.post('cad-paciente2', {
-            nome2,
-            idade2,
-            registro2: "Colpocitologia",
-            unidade2,
-            data_coleta2,
-            adequabilidade2,
-            epitelios2,
-            alteracoes_celulares2,
-            microbiologia2,
-            conclusao2
-        })
-            .then(res => {
-                alert('Laudo do Paciente Cadastrado!')
-                navigate('/home')
-                // console.log('Posting Data', res)
+    const [error, setError] = useState(false);
 
-            }).catch((err) => {
-                alert('Laudo do Paciente não Cadastrado!')
-            })
-    }
+    const postData2 = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await api.post('cad-paciente2',
+                JSON.stringify({
+                    nome2,
+                    idade2,
+                    registro2: "Colpocitologia",
+                    unidade2,
+                    data_coleta2,
+                    adequabilidade2,
+                    epitelios2,
+                    alteracoes_celulares2,
+                    microbiologia2,
+                    conclusao2
+                }),
+                {
+                    headers: { 'Content-Type': 'application/json' }
+                }
+            );
+
+            alert('Laudo do Paciente Cadastrado!')
+            navigate('/home')
+
+        } catch (error) {
+            if (!error?.response) {
+                setError('Erro ao acessar o servidor');
+            } else if (error.response.status == 401) {
+                alert('Laudo não cadastrado. Verificar se todos os campos foram preenchidos!')
+                // setError('Usuario ou senha inválidos');
+            }
+        }
+    };
 
     function Home() {
         navigate('/home');
@@ -134,7 +147,7 @@ const CadastroSemAlteracoes = () => {
                         </div>
 
                         <div>
-                        <FormControl fullWidth>
+                            <FormControl fullWidth>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} >
                                     <DatePicker value={data_coleta2}
                                         label="Data Coleta"
