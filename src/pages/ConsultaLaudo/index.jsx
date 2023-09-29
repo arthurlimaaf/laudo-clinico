@@ -32,7 +32,7 @@ const ConsultLaudo = () => {
             .then(res => {
                 // console.log("Teste...", res.data.result)
                 setDate(res.data.result)
-            }).catch(err => console.log(err))
+            }).catch(err => console.log(JSON.stringify(err)))
     }, []);
 
     const handleDelete = (id_paciente) => {
