@@ -69,7 +69,7 @@ const CadastroLaudo = () => {
             );
 
             alert('Laudo do Paciente Cadastrado!')
-            navigate('/home')
+            navigate('/consult-laudo')
 
         } catch (error) {
             if (!error?.response) {
