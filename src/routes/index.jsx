@@ -3,9 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home"
 import Login from "../pages/Login"
 import CadastroLaudo from "../pages/CadastroLaudo";
-import ConsultaLaudo from "../pages/ConsultaLaudo";
 import EditaLaudo from "../pages/EditaLaudo";
-import ConsultaSemAlteracoes from "../pages/ConsultaSemAlteracoes";
 import EditaSemAlteracoes from "../pages/EditaSemAlteracoes";
 import CadastroSemAlteracoes from "../pages/CadastroSemAlteracoes";
 import LaudoPDFSemAlteracoes from "../pages/LaudoPDFSemAlteracoes";
@@ -25,9 +23,7 @@ const RoutesApp = () => {
             <Routes>
                 <Route path="/home" element={<Private Item={Home} />} />
                 <Route path="/cad-laudo" element={<Private Item={CadastroLaudo} />} />
-                <Route path="/consult-laudo" element={<Private Item={ConsultaLaudo} />} />
                 <Route path="/edit-laudo" element={<Private Item={EditaLaudo} />} />
-                <Route path="/consult-sem-alteracoes" element={<Private Item={ConsultaSemAlteracoes} />} />
                 <Route path="/edit-sem-alteracoes" element={<Private Item={EditaSemAlteracoes} />} />
                 <Route path="/cad-sem-alteracoes" element={<Private Item={CadastroSemAlteracoes} />} />
                 <Route path="/laudo-pdf" element={<Private Item={LaudoPDF} />} />
