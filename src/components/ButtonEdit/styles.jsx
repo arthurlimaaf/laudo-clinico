@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonEdit = styled.button`
-    padding: 10px 13px;
+    padding: 15px 1px;
     outline: none;
     border: none;
     border-radius: 10px;
@@ -11,6 +11,6 @@ export const ButtonEdit = styled.button`
     color: white;
     font-weight: 600;
     font-size: 16px;
-    max-width: 80px;
+    max-width: 75px;
 
 `

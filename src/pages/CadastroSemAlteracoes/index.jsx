@@ -67,7 +67,7 @@ const CadastroSemAlteracoes = () => {
             );
 
             alert('Laudo do Paciente Cadastrado!')
-            navigate('/consult-sem-alteracoes')
+            navigate('/home')
 
         } catch (error) {
             if (!error?.response) {
