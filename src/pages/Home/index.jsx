@@ -55,16 +55,16 @@ const Home = () => {
     useEffect(() => {
         api.get('listPaciente')
             .then(res => {
-                // console.log("Teste...", res.data.result)
-                setDate(res.data.result)
-                setFilter(res.data.result)
+                // console.log("Teste...", res)
+                setDate(res.data)
+                setFilter(res.data)
             }).catch(err => console.log(JSON.stringify(err))),
 
             api.get('listPaciente2')
                 .then(res => {
                     // console.log("Teste...", res.data.result)
-                    setDate2(res.data.result)
-                    setFilter2(res.data.result)
+                    setDate2(res.data)
+                    setFilter2(res.data)
                 }).catch(err => console.log(err))
     }, []);
 
