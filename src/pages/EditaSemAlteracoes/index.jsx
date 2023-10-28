@@ -62,7 +62,7 @@ const EditaSemAlteracoes = () => {
       }
 
     function Home(){
-        navigate('/consult-sem-alteracoes');
+        navigate('/home');
     }
 
     return (

@@ -67,7 +67,7 @@ const EditaLaudo = () => {
       }
 
     function Home(){
-        navigate('/consult-laudo');
+        navigate('/home');
     }
 
     return (

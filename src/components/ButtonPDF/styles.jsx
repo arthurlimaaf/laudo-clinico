@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonPDF = styled.button`
-    padding: 10px 13px;
+    padding: 15px 10px;
     outline: none;
     border: none;
     border-radius: 10px;
@@ -11,5 +11,5 @@ export const ButtonPDF = styled.button`
     color: white;
     font-weight: 600;
     font-size: 16px;
-    max-width: 70px;
+    max-width: 75px;
 `

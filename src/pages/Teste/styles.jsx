@@ -6,24 +6,11 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 10px;
+    height: 90vh;
     width: 99vw;
 `;
 
 export const Content = styled.div`
-    gap: 25px;
-    display: block;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    box-shadow: 0 1px 2px #0003;
-    background-color: white;
-    max-width: 1200px;
-    padding: 30px;
-    border-radius: 5px;
-`;
-
-export const Content2 = styled.div`
     gap: 25px;
     display: flex;
     align-items: center;
@@ -32,7 +19,7 @@ export const Content2 = styled.div`
     width: 100%;
     box-shadow: 0 1px 2px #0003;
     background-color: white;
-    max-width: 1000px;
+    max-width: 400px;
     padding: 30px;
     border-radius: 5px;
 `;
