@@ -112,14 +112,14 @@ const Home = () => {
     const [filterRecords, setFilter] = useState([]);
 
     const handleFilter = (event) => {
-        const newData = filterRecords.filter(TableRow => TableRow.nome.toLowerCase().includes(event.target.value.toLowerCase()))
+        const newData = filterRecords.filter(TableRow => TableRow.unidade.toLowerCase().includes(event.target.value.toLowerCase()))
         setDate(newData);
     }
 
     const [filterRecords2, setFilter2] = useState([]);
 
     const handleFilter2 = (event) => {
-        const newData2 = filterRecords2.filter(TableRow => TableRow.nome2.toLowerCase().includes(event.target.value.toLowerCase()))
+        const newData2 = filterRecords2.filter(TableRow => TableRow.unidade2.toLowerCase().includes(event.target.value.toLowerCase()))
         setDate2(newData2);
     }
 
