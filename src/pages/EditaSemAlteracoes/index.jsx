@@ -72,13 +72,12 @@ const EditaSemAlteracoes = () => {
     const [microbiologia2, setMicrobiologia2] = useState(data.microbiologia2)
     const [atipias2, setAtipias2] = useState(data.atipias2)
     const [conclusao2, setConclusao2] = useState(data.conclusao2)
-    const [outros2, setOutros2] = useState(data.outros2)
 
     function EditLaudo2(nome2) {
         api.put(`put-paciente2/${nome2}`, {
             nome2: nome2, idade2: idade2, registro2: registro2, unidade2: unidade2, data_coleta2: data_coleta2,
             adequabilidade2: adequabilidade2, epitelios2: epitelios2, microbiologia2: microbiologia2,
-            atipias2: atipias2, conclusao2: conclusao2, outros2: outros2
+            atipias2: atipias2, conclusao2: conclusao2
         }, (res) => {
             console.log(res);
         })

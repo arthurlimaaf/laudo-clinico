@@ -68,7 +68,6 @@ const CadastroSemAlteracoes = () => {
     const [microbiologia2, setMicrobiologia2] = useState('')
     const [atipias2, setAtipias2] = useState('')
     const [conclusao2, setConclusao2] = useState('');
-    const [outros2, setOutros2] = useState('');
 
     const [error, setError] = useState(false);
 
@@ -88,7 +87,6 @@ const CadastroSemAlteracoes = () => {
                     microbiologia2,
                     atipias2,
                     conclusao2,
-                    outros2
                 }),
                 {
                     headers: { 'Content-Type': 'application/json' }
