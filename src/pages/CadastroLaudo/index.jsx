@@ -18,8 +18,35 @@ import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const CadastroLaudo = () => {
+
+    const top_Conclusao = [
+        { title: 'Citologia inflamatória discreta.' },
+        { title: 'Citologia inflamatória moderada.' },
+        { title: 'Citologia inflamatória acentuada.' },
+        { title: 'Citologia inflamatória discreta atrófica.' },
+        { title: 'Citologia inflamatória moderada atrófica.' },
+        { title: "Citologia inflamatória acentuada atrófica." },
+        { title: 'Células escamosas atípicas de significado indeterminado (ASC-US)' },
+        { title: 'Células escamosas atípicas, não sendo possível excluir Lesão intraepitelial de alto grau (ASC-H)' },
+        { title: 'Lesão intraepitelial escamosa de baixo grau (LSIL)' },
+        { title: 'Lesão intraepitelial escamosa de alto grau (HSIL)' },
+        { title: 'Lesão intraepitelial escamosa de alto grau (HSIL) com características suspeitas de invasão' },
+        { title: 'Carcinoma de células escamosas' },
+        { title: 'Células endocervicais atípicas, sem outras especificações (SOE)' },
+        { title: 'Células endometriais atípicas, sem outras especificações (SOE)' },
+        { title: 'Células glandulares atípicas, sem outras especificações (SOE)' },
+        { title: 'Células endocervicais atípicas, favorecendo neoplasia' },
+        { title: 'Células glandulares atípicas, favorecendo neoplasia' },
+        { title: 'Adenocarcinoma endocervical "in situ"' },
+        { title: 'Adenocarcinoma endocervical' },
+        { title: 'Adenocarcinoma endometrial' },
+        { title: 'Adenocarcinoma extrauterino' },
+        { title: 'Adenocarcinoma, sem outras especificações (SOE)' },
+        { title: 'NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO.' }
+    ];
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -247,7 +274,7 @@ const CadastroLaudo = () => {
                                     value={atipias_celulares}
                                     onChange={(e) => setAtipias(e.target.value)}
                                 >
-                                    <FormControlLabel value="Presente" control={<Radio />} label="Presente" />
+                                    {/* <FormControlLabel value="Presente" control={<Radio />} label="Presente" /> */}
                                     <FormControlLabel value="Ausente" control={<Radio />} label="Ausente" />
                                 </RadioGroup><br></br>
 
@@ -255,20 +282,18 @@ const CadastroLaudo = () => {
                                 {/*VERIFICAR ESSA OBSERVAÇÃO  */}
 
                                 <h5>* CONCLUSÃO</h5>
-                                <RadioGroup
-                                    aria-labelledby="demo-radio-buttons-group-label"
-                                    defaultValue="female"
-                                    name="radio-buttons-group"
-                                    value={conclusao}
-                                    onChange={(e) => setConclusao(e.target.value)}
-                                >
-                                    <FormControlLabel value="Citologia inflamatória discreta" control={<Radio />} label="Citologia inflamatória discreta" />
-                                    <FormControlLabel value="Citologia inflamatória moderada" control={<Radio />} label="Citologia inflamatória moderada" />
-                                    <FormControlLabel value="Citologia inflamatória acentuada" control={<Radio />} label="Citologia inflamatória acentuada" />
-                                    <FormControlLabel value="Citologia inflamatória discreta atrófica" control={<Radio />} label="Citologia inflamatória discreta atrófica" />
-                                    <FormControlLabel value="Citologia inflamatória moderada atrófica" control={<Radio />} label="Citologia inflamatória moderada atrófica" />
-                                    <FormControlLabel value="Citologia inflamatória acentuada atrófica" control={<Radio />} label="Citologia inflamatória acentuada atrófica" />
-                                </RadioGroup><br></br>
+                                <Stack spacing={2} sx={{ width: 500 }}>
+                                    <Autocomplete
+                                        id="free-solo-demo"
+                                        freeSolo
+                                        value={conclusao}
+                                        onChange={(e, newValue) => {
+                                            setConclusao(newValue);
+                                        }}
+                                        options={top_Conclusao.map((option) => option.title)}
+                                        renderInput={(params) => <TextField {...params} value={conclusao} onChange={e => setConclusao(e.target.value)} />}
+                                    />
+                                </Stack><br></br>
                             </FormControl>
                         </div><br></br>
                     </Box>

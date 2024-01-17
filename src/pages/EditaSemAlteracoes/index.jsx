@@ -20,8 +20,36 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import dayjs from "dayjs";
+import Autocomplete from '@mui/material/Autocomplete';
 
 const EditaSemAlteracoes = () => {
+
+    const top_Conclusao = [
+        { title: 'Citologia inflamatória discreta.' },
+        { title: 'Citologia inflamatória moderada.' },
+        { title: 'Citologia inflamatória acentuada.' },
+        { title: 'Citologia inflamatória discreta atrófica.' },
+        { title: 'Citologia inflamatória moderada atrófica.' },
+        { title: "Citologia inflamatória acentuada atrófica." },
+        { title: 'Células escamosas atípicas de significado indeterminado (ASC-US)' },
+        { title: 'Células escamosas atípicas, não sendo possível excluir Lesão intraepitelial de alto grau (ASC-H)' },
+        { title: 'Lesão intraepitelial escamosa de baixo grau (LSIL)' },
+        { title: 'Lesão intraepitelial escamosa de alto grau (HSIL)' },
+        { title: 'Lesão intraepitelial escamosa de alto grau (HSIL) com características suspeitas de invasão' },
+        { title: 'Carcinoma de células escamosas' },
+        { title: 'Células endocervicais atípicas, sem outras especificações (SOE)' },
+        { title: 'Células endometriais atípicas, sem outras especificações (SOE)' },
+        { title: 'Células glandulares atípicas, sem outras especificações (SOE)' },
+        { title: 'Células endocervicais atípicas, favorecendo neoplasia' },
+        { title: 'Células glandulares atípicas, favorecendo neoplasia' },
+        { title: 'Adenocarcinoma endocervical "in situ"' },
+        { title: 'Adenocarcinoma endocervical' },
+        { title: 'Adenocarcinoma endometrial' },
+        { title: 'Adenocarcinoma extrauterino' },
+        { title: 'Adenocarcinoma, sem outras especificações (SOE)' },
+        { title: 'NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO.' },
+        { title: '' }
+    ];
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -41,27 +69,30 @@ const EditaSemAlteracoes = () => {
     const [data_coleta2, setData2] = useState(data.data_coleta2)
     const [adequabilidade2, setAdequabilidade2] = useState(data.adequabilidade2)
     const [epitelios2, setEpitelios2] = useState(data.epitelios2)
-    const [alteracoes_celulares2, setAlteracoes2] = useState(data.alteracoes_celulares2)
     const [microbiologia2, setMicrobiologia2] = useState(data.microbiologia2)
+    const [atipias2, setAtipias2] = useState(data.atipias2)
     const [conclusao2, setConclusao2] = useState(data.conclusao2)
+    const [outros2, setOutros2] = useState(data.outros2)
 
     function EditLaudo2(nome2) {
-        api.put(`put-paciente2/${nome2}`, {nome2: nome2, idade2: idade2, registro2: registro2, unidade2: unidade2, data_coleta2: data_coleta2,
-         adequabilidade2: adequabilidade2, epitelios2: epitelios2, alteracoes_celulares2: alteracoes_celulares2, 
-         microbiologia2: microbiologia2, conclusao2: conclusao2}, (res) => {
+        api.put(`put-paciente2/${nome2}`, {
+            nome2: nome2, idade2: idade2, registro2: registro2, unidade2: unidade2, data_coleta2: data_coleta2,
+            adequabilidade2: adequabilidade2, epitelios2: epitelios2, microbiologia2: microbiologia2,
+            atipias2: atipias2, conclusao2: conclusao2, outros2: outros2
+        }, (res) => {
             console.log(res);
-         })
-        .then(res => {
-            alert('Laudo Paciente Atualizado!')
-            navigate('/home')
-            // console.log(res);
-    
-        } ).catch((err) => {
-          alert('Laudo Paciente não Atualizado!')
         })
-      }
+            .then(res => {
+                alert('Laudo Paciente Atualizado!')
+                navigate('/home')
+                // console.log(res);
 
-    function Home(){
+            }).catch((err) => {
+                alert('Laudo Paciente não Atualizado!')
+            })
+    }
+
+    function Home() {
         navigate('/home');
     }
 
@@ -77,7 +108,7 @@ const EditaSemAlteracoes = () => {
                                 id="standard-size-normal"
                                 variant="standard"
                                 disabled={true}
-                                value={data.nome2} 
+                                value={data.nome2}
                                 onChange={e => setNome2(e.target.value)}
                             />
 
@@ -86,7 +117,7 @@ const EditaSemAlteracoes = () => {
                                 label="Idade:"
                                 id="standard-size-normal"
                                 variant="standard"
-                                value={idade2} 
+                                value={idade2}
                                 onChange={e => setIdade2(e.target.value)}
                             />
                         </div>
@@ -105,7 +136,7 @@ const EditaSemAlteracoes = () => {
                         </div>
 
                         <div>
-                        <Box sx={{ minWidth: 220 }}>
+                            <Box sx={{ minWidth: 220 }}>
                                 <FormControl fullWidth>
                                     <InputLabel id="demo-simple-select-label">Unidade</InputLabel>
                                     <Select
@@ -181,18 +212,7 @@ const EditaSemAlteracoes = () => {
                                 </RadioGroup><br></br>
                             </FormControl>
 
-                            <h5>* ALTERAÇÕES CELULARES BENIGNAS REATIVAS OU REPARATIVAS</h5>
                             <FormControl>
-                                <RadioGroup
-                                    aria-labelledby="demo-radio-buttons-group-label"
-                                    defaultValue="female"
-                                    name="radio-buttons-group"
-                                    value={alteracoes_celulares2}
-                                    onChange={e => setAlteracoes2(e.target.value)}
-                                >
-                                    <FormControlLabel value="Dentro dos Limites da Normalidade" control={<Radio />} label="Dentro dos Limites da Normalidade" />
-                                </RadioGroup><br></br>
-
                                 <h5>* MICROBIOLOGIA</h5>
                                 <RadioGroup
                                     aria-labelledby="demo-radio-buttons-group-label"
@@ -218,21 +238,35 @@ const EditaSemAlteracoes = () => {
                                     <FormControlLabel value="Alterações celulares consistentes com Citomegalovírus" control={<Radio />} label="Alterações celulares consistentes com Citomegalovírus" />
                                 </RadioGroup><br></br>
 
-                                <h5>* CONCLUSÃO</h5>
+                                <h5>* ATIPIAS CELULARES</h5>
                                 <RadioGroup
                                     aria-labelledby="demo-radio-buttons-group-label"
                                     defaultValue="female"
                                     name="radio-buttons-group"
-                                    value={conclusao2}
-                                    onChange={e => setConclusao2(e.target.value)}
+                                    value={atipias2}
+                                    onChange={e => setAtipias2(e.target.value)}
                                 >
-                                    <FormControlLabel value="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." control={<Radio />} label="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." />
+                                    <FormControlLabel value="Presente" control={<Radio />} label="Presente" />
                                 </RadioGroup><br></br>
-                            </FormControl>                            
+
+                                <h5>* CONCLUSÃO</h5>
+                                <Stack spacing={2} sx={{ width: 500 }}>
+                                    <Autocomplete
+                                        id="free-solo-demo"
+                                        freeSolo
+                                        value={conclusao2}
+                                        onChange={(e, newValue) => {
+                                            setConclusao2(newValue);
+                                        }}
+                                        options={top_Conclusao.map((option) => option.title)}
+                                        renderInput={(params) => <TextField {...params} value={conclusao2} onChange={e => setConclusao2(e.target.value)} />}
+                                    />
+                                </Stack><br></br>
+                            </FormControl>
                         </div>
                     </Box>
                     <Stack direction="row" spacing={2}>
-                        <Button onClick={()=> EditLaudo2(data.nome2)} variant="contained">ATUALIZAR</Button>
+                        <Button onClick={() => EditLaudo2(data.nome2)} variant="contained">ATUALIZAR</Button>
                         <Button onClick={Home} variant="contained">VOLTAR</Button>
                     </Stack>
                 </form>

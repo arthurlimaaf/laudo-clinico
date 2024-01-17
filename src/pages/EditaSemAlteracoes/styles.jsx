@@ -6,7 +6,7 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    width: 100vw;
+    width: 98vw;
     max-height: 350vh;
 `;
 

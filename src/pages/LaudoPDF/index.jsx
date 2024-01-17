@@ -109,9 +109,9 @@ const LaudoPDF = () => {
                                             <a id="Conclu">{data.conclusao}</a>
                                         </div>
 
-                                        <div>
+                                        {/* <div>
                                             <h5 id="Paragrafo1">NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO.</h5>
-                                        </div>
+                                        </div> */}
 
                                         <div>
                                             <img id="imagem" src={assinatura} />

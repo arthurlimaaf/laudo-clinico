@@ -42,7 +42,7 @@ const LaudoPDFSemAlteracoes = () => {
                                         </div>
 
                                         <div>
-                                            <h4 id="Titulo">LAUDO DO EXAME CITOPALÓGICOD DO COLO DO ÚTERO</h4>
+                                            <h4 id="Titulo">LAUDO DO EXAME CITOPALÓGICO DO COLO DO ÚTERO</h4>
                                         </div>
 
                                         <div>
@@ -78,19 +78,19 @@ const LaudoPDFSemAlteracoes = () => {
                                         </div>
 
                                         <div>
-                                            <h5 id="Alteracoes_Celulares">ALTERAÇÕES CELULARES BENIGNAS REATIVAS OU REPARATIVAS</h5>
-                                        </div>
-
-                                        <div>
-                                            <a id="Alteracoes">{data.alteracoes_celulares2}</a>
-                                        </div>
-
-                                        <div>
                                             <h5 id="Microbiologia">MICROBIOLOGIA</h5>
                                         </div>
 
                                         <div>
                                             <a id="Micro">{data.microbiologia2}</a>
+                                        </div>
+
+                                        <div>
+                                            <h5 id="Atipias_Celulares2">ATIPIAS CELULARES</h5>
+                                        </div>
+
+                                        <div>
+                                            <a id="Atipias2">{data.atipias2}</a>
                                         </div>
 
                                         <div>

@@ -18,8 +18,35 @@ import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const CadastroSemAlteracoes = () => {
+
+    const top_Conclusao = [
+        { title: 'Citologia inflamatória discreta.' },
+        { title: 'Citologia inflamatória moderada.' },
+        { title: 'Citologia inflamatória acentuada.' },
+        { title: 'Citologia inflamatória discreta atrófica.' },
+        { title: 'Citologia inflamatória moderada atrófica.' },
+        { title: "Citologia inflamatória acentuada atrófica." },
+        { title: 'Células escamosas atípicas de significado indeterminado (ASC-US)' },
+        { title: 'Células escamosas atípicas, não sendo possível excluir Lesão intraepitelial de alto grau (ASC-H)' },
+        { title: 'Lesão intraepitelial escamosa de baixo grau (LSIL)' },
+        { title: 'Lesão intraepitelial escamosa de alto grau (HSIL)' },
+        { title: 'Lesão intraepitelial escamosa de alto grau (HSIL) com características suspeitas de invasão' },
+        { title: 'Carcinoma de células escamosas' },
+        { title: 'Células endocervicais atípicas, sem outras especificações (SOE)' },
+        { title: 'Células endometriais atípicas, sem outras especificações (SOE)' },
+        { title: 'Células glandulares atípicas, sem outras especificações (SOE)' },
+        { title: 'Células endocervicais atípicas, favorecendo neoplasia' },
+        { title: 'Células glandulares atípicas, favorecendo neoplasia' },
+        { title: 'Adenocarcinoma endocervical "in situ"' },
+        { title: 'Adenocarcinoma endocervical' },
+        { title: 'Adenocarcinoma endometrial' },
+        { title: 'Adenocarcinoma extrauterino' },
+        { title: 'Adenocarcinoma, sem outras especificações (SOE)' },
+        { title: 'NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO.' }
+    ];
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -38,9 +65,10 @@ const CadastroSemAlteracoes = () => {
     const [data_coleta2, setData2] = useState(null)
     const [adequabilidade2, setAdequabilidade2] = useState('')
     const [epitelios2, setEpitelios2] = useState('')
-    const [alteracoes_celulares2, setAlteracoes2] = useState('')
     const [microbiologia2, setMicrobiologia2] = useState('')
+    const [atipias2, setAtipias2] = useState('')
     const [conclusao2, setConclusao2] = useState('');
+    const [outros2, setOutros2] = useState('');
 
     const [error, setError] = useState(false);
 
@@ -57,9 +85,10 @@ const CadastroSemAlteracoes = () => {
                     data_coleta2,
                     adequabilidade2,
                     epitelios2,
-                    alteracoes_celulares2,
                     microbiologia2,
-                    conclusao2
+                    atipias2,
+                    conclusao2,
+                    outros2
                 }),
                 {
                     headers: { 'Content-Type': 'application/json' }
@@ -197,18 +226,7 @@ const CadastroSemAlteracoes = () => {
                                 </RadioGroup><br></br>
                             </FormControl>
 
-                            <h5>* ALTERAÇÕES CELULARES BENIGNAS REATIVAS OU REPARATIVAS</h5>
                             <FormControl>
-                                <RadioGroup
-                                    aria-labelledby="demo-radio-buttons-group-label"
-                                    defaultValue="female"
-                                    name="radio-buttons-group"
-                                    value={alteracoes_celulares2}
-                                    onChange={(e) => setAlteracoes2(e.target.value)}
-                                >
-                                    <FormControlLabel value="Dentro dos Limites da Normalidade" control={<Radio />} label="Dentro dos Limites da Normalidade" />
-                                </RadioGroup><br></br>
-
                                 <h5>* MICROBIOLOGIA</h5>
                                 <RadioGroup
                                     aria-labelledby="demo-radio-buttons-group-label"
@@ -234,16 +252,30 @@ const CadastroSemAlteracoes = () => {
                                     <FormControlLabel value="Alterações celulares consistentes com Citomegalovírus" control={<Radio />} label="Alterações celulares consistentes com Citomegalovírus" />
                                 </RadioGroup><br></br>
 
-                                <h5>* CONCLUSÃO</h5>
+                                <h5>* ATIPIAS CELULARES</h5>
                                 <RadioGroup
                                     aria-labelledby="demo-radio-buttons-group-label"
                                     defaultValue="female"
                                     name="radio-buttons-group"
-                                    value={conclusao2}
-                                    onChange={(e) => setConclusao2(e.target.value)}
+                                    value={atipias2}
+                                    onChange={(e) => setAtipias2(e.target.value)}
                                 >
-                                    <FormControlLabel value="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." control={<Radio />} label="NEGATIVO PARA LESÃO INTRAEPITELIAL OU MALIGNIDADE NO MATERIAL EXAMINADO." />
+                                    <FormControlLabel value="Presente" control={<Radio />} label="Presente" />
                                 </RadioGroup><br></br>
+
+                                <h5>* CONCLUSÃO</h5>
+                                <Stack spacing={2} sx={{ width: 500 }}>
+                                    <Autocomplete
+                                        id="free-solo-demo"
+                                        freeSolo
+                                        value={conclusao2}
+                                        onChange={(e, newValue) => {
+                                            setConclusao2(newValue);
+                                        }}
+                                        options={top_Conclusao.map((option) => option.title)}
+                                        renderInput={(params) => <TextField {...params} value={conclusao2} onChange={e => setConclusao2(e.target.value)} />}
+                                    />
+                                </Stack><br></br>
                             </FormControl>
                         </div>
                     </Box>

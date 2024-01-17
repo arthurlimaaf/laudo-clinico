@@ -129,7 +129,7 @@ export const ContainerNome = styled.div`
         // text-shadow: 0px 0px 5px black;
     }
 
-    #Alteracoes_Celulares {
+    #Microbiologia {
         position: absolute;
         top: 610px;
         left: 50px;
@@ -138,7 +138,7 @@ export const ContainerNome = styled.div`
         // text-shadow: 0px 0px 5px black;
     }
 
-    #Alteracoes {
+    #Micro {
         position: absolute;
         top: 630px;
         left: 50px;
@@ -147,7 +147,7 @@ export const ContainerNome = styled.div`
         // text-shadow: 0px 0px 5px black;
     }
 
-    #Microbiologia {
+    #Atipias_Celulares2 {
         position: absolute;
         top: 670px;
         left: 50px;
@@ -156,7 +156,7 @@ export const ContainerNome = styled.div`
         // text-shadow: 0px 0px 5px black;
     }
 
-    #Micro {
+    #Atipias2 {
         position: absolute;
         top: 690px;
         left: 50px;

@@ -44,12 +44,12 @@ const Home = () => {
         navigate("/laudo-pdf", { state: { nome, idade, registro, unidade, dataFormatada, adequabilidade, epitelios, alteracoes_celulares, microbiologia, atipias_celulares, conclusao } });
     }
 
-    const EditLaudo2 = (nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2) => {
-        navigate("/edit-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2 } });
+    const EditLaudo2 = (nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, microbiologia2, atipias2, conclusao2, outros2) => {
+        navigate("/edit-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, data_coleta2, adequabilidade2, epitelios2, microbiologia2, atipias2, conclusao2, outros2 } });
     }
 
-    const LaudoPDFSemAlteracoes = (nome2, idade2, registro2, unidade2, dataFormatada, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2) => {
-        navigate("/laudo-pdf-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, dataFormatada, adequabilidade2, epitelios2, alteracoes_celulares2, microbiologia2, conclusao2 } });
+    const LaudoPDFSemAlteracoes = (nome2, idade2, registro2, unidade2, dataFormatada, adequabilidade2, epitelios2, microbiologia2, atipias2, conclusao2, outros2) => {
+        navigate("/laudo-pdf-sem-alteracoes", { state: { nome2, idade2, registro2, unidade2, dataFormatada, adequabilidade2, epitelios2, microbiologia2, atipias2, conclusao2, outros2 } });
     }
 
     useEffect(() => {
@@ -147,7 +147,7 @@ const Home = () => {
                                 maxWidth: '100%',
                             }}
                         >
-                            <TextField onChange={handleFilter} fullWidth label="Nome do Paciente" id="fullWidth" />
+                            <TextField onChange={handleFilter} fullWidth label="Nome da Unidade" id="fullWidth" />
                         </Box>
                     </DialogTitle>
                     <DialogContent>
@@ -214,7 +214,7 @@ const Home = () => {
                                 maxWidth: '100%',
                             }}
                         >
-                            <TextField onChange={handleFilter2} fullWidth label="Nome do Paciente" id="fullWidth" />
+                            <TextField onChange={handleFilter2} fullWidth label="Nome da Unidade" id="fullWidth" />
                         </Box>
                     </DialogTitle>
                     <DialogContent>
@@ -251,9 +251,9 @@ const Home = () => {
                                             <TableCell align="right">{data.registro2}</TableCell>
                                             <TableCell align="right">{data.unidade2}</TableCell>
                                             <TableCell align="right">{dataFormatada}</TableCell>
-                                            <TableCell align="right"><ButtonEdit onClick={() => EditLaudo2(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} Text="Editar" /></TableCell>
+                                            <TableCell align="right"><ButtonEdit onClick={() => EditLaudo2(data.nome2, data.idade2, data.registro2, data.unidade2, data.data_coleta2, data.adequabilidade2, data.epitelios2, data.microbiologia2, data.atipias2, data.conclusao2, data.outros2)} Text="Editar" /></TableCell>
                                             <TableCell align="right"><ButtonExcluir onClick={() => handleDelete2(data.id_paciente2)} Text="Excluir" /></TableCell>
-                                            <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDFSemAlteracoes(data.nome2, data.idade2, data.registro2, data.unidade2, dataFormatada, data.adequabilidade2, data.epitelios2, data.alteracoes_celulares2, data.microbiologia2, data.conclusao2)} /></TableCell>
+                                            <TableCell align="right"><ButtonPDF Text="PDF" onClick={() => LaudoPDFSemAlteracoes(data.nome2, data.idade2, data.registro2, data.unidade2, dataFormatada, data.adequabilidade2, data.epitelios2, data.microbiologia2, data.atipias2, data.conclusao2, data.outros2)} /></TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
